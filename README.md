@@ -24,6 +24,10 @@ Front door (using smart lock & door bell)
 Porch (Storage box for delivery)
  * When lid is opened, take video of porch
 
+Turn off lights at night
+ * Turn off all interior lights when going to sleep
+   * Link this in with Sleep as android
+
 ## Tasks run occasionally 
 Washer dryer
  * When washer or dryer is finished, send email/other alert
@@ -33,6 +37,7 @@ Washer dryer
 
 ## Parts list
 
+ * Synology NAS
  * Z-Wave Blinds (12 windows)
    * Back living group (4 windows: Dining room, Living room)
    * Front living group (2 windows: Front room)
@@ -55,3 +60,11 @@ Washer dryer
      * Hallway light (1 main switch (+ 1 aux switch?))
      * Washer/Dryer light (1 main switch)
  * Energy meter for washer & dryer
+
+## Linked Apps
+ * Sleep as android
+   * Alarm start
+   * Alarm end
+ * Tasker
+   * Sending triggers to main hub
+ * OpenHAB
