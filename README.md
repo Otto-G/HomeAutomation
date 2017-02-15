@@ -70,10 +70,15 @@ Washer dryer
  - [ ] Energy meter for washer & dryer
 
 ## Linked Apps
- - Sleep as android
+ - [Sleep as android](http://sleep.urbandroid.org/)
    - Alarm start
    - Alarm end
- - Tasker
+ - [Tasker](https://tasker.dinglisch.net/)
    - Sending triggers to main hub
    - Uses mqtt to send messages
- - Home-assistant.io
+ - [Home-assistant](https://home-assistant.io/)
+   - Main hub
+ - [Owntracks](http://owntracks.org/)
+   - Used for location tracking
+ - [Pebble watch](https://www.pebble.com/)
+   - Used for starting sleep as android and motion during sleeping
