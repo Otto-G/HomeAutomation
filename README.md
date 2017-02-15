@@ -66,7 +66,7 @@ Washer dryer
      - [ ] Master bath light group (1 main switch)
    - [ ] Auxilary group (2 main switches (+ 1 aux switch?))
      - [ ] Hallway light (1 main switch (+ 1 aux switch?))
-     - [ ] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch)
+     - [ ] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Energy meter for washer & dryer
 
 ## Linked Apps
