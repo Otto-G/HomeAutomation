@@ -1,0 +1,398 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_lon
+  # Impacts weather/sunrise data (meters above sealevel)
+  elevation: !secret home_elev
+  # 'metric' for the metric system, 'imperial' for the imperial system
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret time_zone
+    
+    
+###################################################
+#                 Customization                   #
+###################################################
+  customize: 
+    device_tracker.nexus6connect:
+        friendly_name: Michael
+    device_tracker.pi_shamu:
+        friendly_name: Michael
+    switch.ge_unknown_type4952_id3033_switch_2_0:
+        friendly_name: CoachLights
+    switch.ge_unknown_type4952_id3033_switch_3_0:
+        friendly_name: LivingRoomLightFan
+    switch.ge_unknown_type4952_id3033_switch_4_0:
+        friendly_name: MasterBedroomLightFan
+    group.all_automations:
+        hidden: false
+
+###################################################
+#                     Zones                       #
+###################################################
+zone:
+  name: Work
+  latitude: !secret work_lat
+  longitude: !secret work_lon
+  radius: 150
+  icon: mdi:domain
+
+zone 2:
+  name: Honda R&D
+  latitude: !secret guest_lat
+  longitude: !secret guest_lon
+  radius: 500
+  icon: mdi:factory 
+
+# Configuration for the website
+http:
+    api_password: !secret api_pass_code
+    
+# Checks for available updates
+updater:
+
+# Enables support for tracking state changes over time.
+history:
+
+# Track the sun
+sun:
+
+# Discover some devices automatically
+discovery:
+
+###################################################
+#                      Hubs                       #
+###################################################
+
+zwave:
+    usb_path: /dev/ttyACM0
+    config_path: /srv/hass/src/open-zwave-control-panel/config
+    polling_interval: 10000 # Polling speed in miliseconds
+
+###################################################
+#                    Devices                      #
+###################################################
+
+media_player:
+    platform: cast
+    host: 192.168.1.2
+
+#media_player 2:
+#    platform: plex
+
+#media_player 3:
+#    platform: roku
+#    host: 192.168.1.6
+
+
+###################################################
+#                    Weather                      #
+###################################################
+
+# Weather Prediction
+sensor:
+    platform: darksky
+    api_key: !secret darksky_key
+    monitored_conditions:
+      - summary
+      - temperature
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - wind_speed
+      - wind_bearing
+#      - cloud_cover
+      - humidity
+      - dew_point
+      - pressure
+      - visibility
+#      - ozone
+#      - minutely_summary
+      - hourly_summary
+#      - daily_summary
+
+camera:
+    platform: generic
+    still_image_url: !secret radar_url
+    name: HomeWeatherRadar
+
+###################################################
+#                    Sensors                      #
+###################################################
+
+# System resources
+sensor 2: 
+    platform: systemmonitor
+    resources: 
+      - type: 'disk_use_percent'
+        arg: '/'
+      - type: 'disk_free'
+        arg: '/'
+      - type: 'memory_use_percent'
+      - type: 'memory_use'
+      - type: 'memory_free'
+      - type: 'processor_use'
+
+###################################################
+#              Presence Detection                 #
+###################################################
+
+# Tracking through TP-Link Router
+#device_tracker:
+#  platform: tplink
+#  host: 192.168.1.1
+#  username: !!secret tp_link_user
+#  password: !secret tp_link_pass
+
+# Tracking through nmap (higher cpu usage)
+#device_tracker:
+#    platform: nmap_tracker
+#    hosts: 192.168.1.1/24
+#    # Number of minutes nmap will not scan this 
+#    # device, assuming it's home, in order to save
+#    # battery life
+#    home_interval: 5
+
+#Tracking through owntracks
+device_tracker:
+  platform: owntracks
+
+  # If newly discovered devices are tracked by default (default: yes)
+  track_new_devices: yes
+  # Seconds between each scan for new devices
+  interval_seconds: 12
+  # Seconds to wait until marking someone as not home after not being seen
+  # (default: 180)
+  consider_home: 600 # is 10min
+
+###################################################
+#                  Notifications                  #
+###################################################
+
+notify:
+    platform: pushbullet
+    api_key: !secret pushbullet_key
+    name: pushbullet
+
+###################################################
+#                      Servers                    #
+###################################################
+
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant-1
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+
+###################################################
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# Show links to resources in log and frontend
+#introduction:
+
+# View all events in a logbook
+logbook:
+
+# Enables the frontend
+frontend:
+
+###################################################
+#                    Groups                       #
+###################################################
+
+### Tabs
+
+# Groups
+group: 
+    default_view: 
+      view: yes
+      entities: 
+        - device_tracker.pi_shamu
+        - group.raspberry_pi
+        - group.weather
+        - group.HomeLights
+
+
+    Control:
+      view: yes
+      entities:
+        - group.media_players
+        - group.all_automations
+
+### Details
+
+    raspberry_pi:
+      name: Raspberry_Pi
+      entities: 
+        - sensor.cpu_use
+        - sensor.ram_use_2
+        - sensor.ram_use
+        - sensor.disk_free_
+        - sensor.disk_use_
+
+    weather:
+      name: Weather
+      entities: 
+        - sensor.dark_sky_summary
+        - sensor.dark_sky_hourly_summary
+        - sensor.dark_sky_temperature
+        - sensor.dark_sky_precip_type
+        - sensor.dark_sky_precip_probability
+        - sensor.dark_sky_wind_speed
+        - sensor.dark_sky_humidity
+        - sensor.dark_sky_dew_point
+        - sensor.dark_sky_visibility
+        - camera.HomeWeatherRadar
+
+    media_players:
+      name: Media_Players
+      entities: 
+        - media_player.loki
+        - media_player.plex_web_chrome
+        - media_player.roku_12c28s042036
+
+    HomeLights:
+      name: HomeLights
+      entities:
+        - switch.ge_unknown_type4952_id3033_switch_2_0
+        - switch.ge_unknown_type4952_id3033_switch_3_0
+        - switch.ge_unknown_type4952_id3033_switch_4_0
+
+###################################################
+#                   Automation                    #
+###################################################
+
+# Automation
+automation: 
+    alias: 'Turn on Lights at Dusk'
+    trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: 1.0
+    action: 
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.ge_unknown_type4952_id3033_switch_2_0
+          - switch.ge_unknown_type4952_id3033_switch_3_0
+      
+#      - service: notify.pushbullet
+#        data: 
+#          title: 'Turned on lights'
+#          message: 'Coach and Living room light turned on'
+
+automation 2: 
+    alias: 'Turn on lights in the morning'
+    trigger: 
+      platform: time
+      after: '06:30:00'
+    condition:
+      condition: and
+      conditions:
+        - condition: numeric_state
+          entity_id: sun.sun
+          value_template: '{{ state.attributes.elevation }}'
+          below: 0.5
+        - condition: time
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+    action: 
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.ge_unknown_type4952_id3033_switch_3_0
+          - switch.ge_unknown_type4952_id3033_switch_4_0
+
+#      - service: notify.pushbullet
+#        data: 
+#          title: 'Turned on lights'
+#          message: 'Good Morning!'
+          
+          
+automation 3:
+    alias: 'Turn off Lights at Night'
+    trigger:
+      platform: time
+      hours: 2
+      minutes: 0
+      seconds: 0
+    action:
+      - service: homeassistant.turn_off
+        entity_id:
+          - switch.ge_unknown_type4952_id3033_switch_2_0
+          - switch.ge_unknown_type4952_id3033_switch_3_0
+          - media_player.loki
+
+#      - service: notify.pushbullet
+#        data:
+#          title: 'Lights out'
+#          message: 'The Coach lights and the Living room light have been turned off'
+
+automation 4:
+    alias: 'Sleep time'
+    trigger:
+      platform: mqtt
+      topic: sleep
+#      payload: 'sleep'
+    action:
+      - service: homeassistant.turn_off
+        entity_id:
+        - switch.ge_unknown_type4952_id3033_switch_3_0
+        - switch.ge_unknown_type4952_id3033_switch_4_0
+        - media_player.loki
+      
+#      - service: notify.pushbullet
+#        data:
+#          title: 'Goodnight'
+#          message: 'Lights have been turned off'
+
+automation 5: 
+    alias: 'Turn off lights in the morning if needed'
+    trigger: 
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 1.0
+    condition:
+      condition: and
+      conditions:
+        - condition: time
+          after: '06:30:00'
+        - condition: time
+          weekday:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+    action: 
+      - service: homeassistant.turn_off
+        entity_id:
+          - switch.ge_unknown_type4952_id3033_switch_3_0
+          #- switch.ge_unknown_type4952_id3033_switch_4_0
+
+#      - service: notify.pushbullet
+#        data: 
+#          title: 'Turned off lights'
+#          message: 'Morning lights have been turned off'
+
+automation 6:
+  alias: 'Update Available Notifications'
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+    service: notify.notify
+    data:
+      message: 'Update for Home Assistant is available.'
+      
+# Scripts
+script: 
