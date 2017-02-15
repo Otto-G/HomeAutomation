@@ -217,7 +217,6 @@ group:
         - group.weather
         - group.HomeLights
 
-
     Control:
       view: yes
       entities:
@@ -280,11 +279,6 @@ automation:
         entity_id:
           - switch.ge_unknown_type4952_id3033_switch_2_0
           - switch.ge_unknown_type4952_id3033_switch_3_0
-      
-#      - service: notify.pushbullet
-#        data: 
-#          title: 'Turned on lights'
-#          message: 'Coach and Living room light turned on'
 
 automation 2: 
     alias: 'Turn on lights in the morning'
@@ -310,12 +304,6 @@ automation 2:
         entity_id:
           - switch.ge_unknown_type4952_id3033_switch_3_0
           - switch.ge_unknown_type4952_id3033_switch_4_0
-
-#      - service: notify.pushbullet
-#        data: 
-#          title: 'Turned on lights'
-#          message: 'Good Morning!'
-          
           
 automation 3:
     alias: 'Turn off Lights at Night'
@@ -331,11 +319,6 @@ automation 3:
           - switch.ge_unknown_type4952_id3033_switch_3_0
           - media_player.loki
 
-#      - service: notify.pushbullet
-#        data:
-#          title: 'Lights out'
-#          message: 'The Coach lights and the Living room light have been turned off'
-
 automation 4:
     alias: 'Sleep time'
     trigger:
@@ -348,11 +331,6 @@ automation 4:
         - switch.ge_unknown_type4952_id3033_switch_3_0
         - switch.ge_unknown_type4952_id3033_switch_4_0
         - media_player.loki
-      
-#      - service: notify.pushbullet
-#        data:
-#          title: 'Goodnight'
-#          message: 'Lights have been turned off'
 
 automation 5: 
     alias: 'Turn off lights in the morning if needed'
@@ -378,11 +356,6 @@ automation 5:
         entity_id:
           - switch.ge_unknown_type4952_id3033_switch_3_0
           #- switch.ge_unknown_type4952_id3033_switch_4_0
-
-#      - service: notify.pushbullet
-#        data: 
-#          title: 'Turned off lights'
-#          message: 'Morning lights have been turned off'
 
 automation 6:
   alias: 'Update Available Notifications'
