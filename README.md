@@ -54,19 +54,19 @@ Washer dryer
    - [ ] Front Guest group (2 windows)
    - [ ] Rear Guest group (1 window)
  - [ ] Light switches
-   - [ ] Coach Light group (2 main switches)
-     - [ ] Pole light (1 main switch)
-     - [x] Coach and porch lights (1 main switch)
+   - [ ] Coach Light group (1 main switches)
+     - [x] Coach and porch lights (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
    - [ ] Living space group (3 main switches + 1 aux switch)
      - [ ] Kitchen light group (1 main switch + 1 aux switch)
      - [ ] Dining room light group (1 main switch)
-     - [x] Living room light group (1 main switch)
+     - [x] Living room light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
    - [ ] Bedroom group (3 main switches)
-     - [x] Bedroom light group (1 main switch)
+     - [x] Bedroom light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
      - [ ] Should add switch for fan (1 main switch)
      - [ ] Master bath light group (1 main switch)
    - [ ] Auxilary group (2 main switches (+ 1 aux switch?))
      - [ ] Hallway light (1 main switch (+ 1 aux switch?))
+     - [ ] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch)
  - [ ] Energy meter for washer & dryer
 
 ## Linked Apps
