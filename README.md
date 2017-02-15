@@ -70,10 +70,10 @@ Washer dryer
  - [ ] Energy meter for washer & dryer
 
 ## Linked Apps
- - [x] Sleep as android
-   - [x] Alarm start
-   - [x] Alarm end
- - [x] Tasker
-   - [x] Sending triggers to main hub
-   - [x] Uses mqtt to send messages
- - [x] Home-assistant.io
+ - Sleep as android
+   - Alarm start
+   - Alarm end
+ - Tasker
+   - Sending triggers to main hub
+   - Uses mqtt to send messages
+ - Home-assistant.io
