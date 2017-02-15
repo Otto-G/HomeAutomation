@@ -1,6 +1,6 @@
 # HomeAutomation
 Automating different parts of the house.
-This is using home-assistant as the base control.  
+This is using [home-assistant](https://home-assistant.io/) as the base control.  Home assistant uses github as their base repository for there code [here](https://github.com/home-assistant/home-assistant) 
 
 ## Tasks that need to be run based on the day
 Monday - Friday
