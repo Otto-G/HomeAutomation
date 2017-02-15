@@ -29,22 +29,10 @@ homeassistant:
     group.all_automations:
         hidden: false
 
-###################################################
-#                     Zones                       #
-###################################################
-zone:
-  name: Work
-  latitude: !secret work_lat
-  longitude: !secret work_lon
-  radius: 150
-  icon: mdi:domain
 
-zone 2:
-  name: Honda R&D
-  latitude: !secret guest_lat
-  longitude: !secret guest_lon
-  radius: 500
-  icon: mdi:factory 
+###################################################
+#                      Misc                       #
+###################################################
 
 # Configuration for the website
 http:
@@ -62,6 +50,35 @@ sun:
 # Discover some devices automatically
 discovery:
 
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# View all events in a logbook
+logbook:
+
+# Enables the frontend
+frontend:
+
+# Show links to resources in log and frontend
+#introduction:
+
+###################################################
+#                     Zones                       #
+###################################################
+zone:
+  name: Work
+  latitude: !secret work_lat
+  longitude: !secret work_lon
+  radius: 150
+  icon: mdi:domain
+
+zone 2:
+  name: Honda R&D
+  latitude: !secret guest_lat
+  longitude: !secret guest_lon
+  radius: 500
+  icon: mdi:factory 
+
 ###################################################
 #                      Hubs                       #
 ###################################################
@@ -70,6 +87,7 @@ zwave:
     usb_path: /dev/ttyACM0
     config_path: /srv/hass/src/open-zwave-control-panel/config
     polling_interval: 10000 # Polling speed in miliseconds
+    # High polling number was needed to keep z-wave network stable and working
 
 ###################################################
 #                    Devices                      #
@@ -119,7 +137,7 @@ camera:
     name: HomeWeatherRadar
 
 ###################################################
-#                    Sensors                      #
+#                  System info                    #
 ###################################################
 
 # System resources
@@ -139,7 +157,9 @@ sensor 2:
 #              Presence Detection                 #
 ###################################################
 
-# Tracking through TP-Link Router
+# Tracking through TP-Link Router 
+# Stopped using after replacing with Owntracks.  Only 1 login is possible  
+# at a time and Home Assistant locks the router from being accessed
 #device_tracker:
 #  platform: tplink
 #  host: 192.168.1.1
@@ -187,19 +207,6 @@ mqtt:
   username: !secret mqtt_user
   password: !secret mqtt_pass
 
-###################################################
-
-# Allows you to issue voice commands from the frontend
-conversation:
-
-# Show links to resources in log and frontend
-#introduction:
-
-# View all events in a logbook
-logbook:
-
-# Enables the frontend
-frontend:
 
 ###################################################
 #                    Groups                       #
@@ -258,9 +265,9 @@ group:
     HomeLights:
       name: HomeLights
       entities:
-        - switch.ge_unknown_type4952_id3033_switch_2_0
-        - switch.ge_unknown_type4952_id3033_switch_3_0
-        - switch.ge_unknown_type4952_id3033_switch_4_0
+        - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
+        - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+        - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
 
 ###################################################
 #                   Automation                    #
@@ -269,6 +276,7 @@ group:
 # Automation
 automation: 
     alias: 'Turn on Lights at Dusk'
+    # Turns on Living room and outdoor lights when the sun goes down
     trigger:
       platform: numeric_state
       entity_id: sun.sun
@@ -277,11 +285,13 @@ automation:
     action: 
       - service: homeassistant.turn_on
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_2_0
-          - switch.ge_unknown_type4952_id3033_switch_3_0
+          - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
+          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
 
 automation 2: 
     alias: 'Turn on lights in the morning'
+    # Turns on master bedroom lights and living room light in the morning if the sun 
+    # is too low on the weekdays. (TODO: check if work is scheduled in google calendar)
     trigger: 
       platform: time
       after: '06:30:00'
@@ -302,11 +312,13 @@ automation 2:
     action: 
       - service: homeassistant.turn_on
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_3_0
-          - switch.ge_unknown_type4952_id3033_switch_4_0
+          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+          - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
           
 automation 3:
     alias: 'Turn off Lights at Night'
+    # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
+    # Also turns off outside lights as they don't need to stay on all night.  
     trigger:
       platform: time
       hours: 2
@@ -315,12 +327,13 @@ automation 3:
     action:
       - service: homeassistant.turn_off
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_2_0
-          - switch.ge_unknown_type4952_id3033_switch_3_0
+          - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
+          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
           - media_player.loki
 
 automation 4:
     alias: 'Sleep time'
+    # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
     trigger:
       platform: mqtt
       topic: sleep
@@ -328,12 +341,14 @@ automation 4:
     action:
       - service: homeassistant.turn_off
         entity_id:
-        - switch.ge_unknown_type4952_id3033_switch_3_0
-        - switch.ge_unknown_type4952_id3033_switch_4_0
+        - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+        - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
         - media_player.loki
 
 automation 5: 
     alias: 'Turn off lights in the morning if needed'
+    # Trns off lights in the morning if the sun rises after 6:30.  
+    # This excludes the master bedroom as I may still need the lights on. 
     trigger: 
       platform: numeric_state
       entity_id: sun.sun
