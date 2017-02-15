@@ -5,10 +5,17 @@ This is using [home-assistant](https://home-assistant.io/) as the base control. 
 ## Tasks that need to be run based on the day
 Monday - Friday
  - [ ] Morning: Automated light turning on linked to Google calendar
-   - [ ] Currently only based on time
- - [x] Turn on Bedroom light after waking up.  Tied to Sleep as android
+   - [x] Currently only based on time
+ - [x] Turn on Bedroom light after waking up.  
+   - Tied to Sleep as android
  - [ ] Turn on Main kitchen light after waking up
    - [ ] Need to add kitchen master and slave switches
+ - [x] Start podcast in morning after waking up
+   - Uses [Tasker](https://tasker.dinglisch.net/) and [Beyondpod](https://www.beyondpod.mobi/android/index.htm)
+   
+Saturday - Sunday
+ - [ ] Turn on lights after waking up if needed
+ - [ ] Start podcast in the morning after waking up
 
 ## Tasks run every day
 Open/Close blinds
@@ -62,10 +69,10 @@ Washer dryer
      - [x] Living room light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
    - [ ] Bedroom group (3 main switches)
      - [x] Bedroom light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
-     - [ ] Should add switch for fan (1 main switch)
+     - [ ] Switch for fan (1 main switch)
      - [ ] Master bath light group (1 main switch)
    - [ ] Auxilary group (2 main switches (+ 1 aux switch?))
-     - [ ] Hallway light (1 main switch (+ 1 aux switch?))
+     - [ ] Hallway light (1 main switch + 1 aux switch)
      - [ ] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Energy meter for washer & dryer
 
@@ -82,3 +89,6 @@ Washer dryer
    - Used for location tracking
  - [Pebble watch](https://www.pebble.com/)
    - Used for starting sleep as android and motion during sleeping
+ - [Beyondpod](https://www.beyondpod.mobi/android/index.htm)
+   - Used to download podcasts and play them offline
+   - Updates automatically early in the morning
