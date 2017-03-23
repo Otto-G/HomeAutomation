@@ -294,7 +294,7 @@ automation 2:
     # is too low on the weekdays. (TODO: check if work is scheduled in google calendar)
     trigger: 
       platform: time
-      after: '07:00:00'
+      after: '06:00:00'
     condition:
       condition: and
       conditions:
@@ -315,7 +315,31 @@ automation 2:
           - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
           - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
           
-automation 3:
+automation 3: 
+    alias: 'Turn on lights in the morning (weekend)'
+    # Turns on master bedroom lights in the morning to help wake up
+    # (TODO: check if work is scheduled in google calendar)
+    trigger: 
+      platform: time
+      after: '08:00:00'
+    condition:
+      condition: and
+      conditions:
+#        - condition: numeric_state
+#          entity_id: sun.sun
+#          value_template: '{{ state.attributes.elevation }}'
+#          below: 0.5
+        - condition: time
+          weekday:
+            - sat
+            - sun
+    action: 
+      - service: homeassistant.turn_on
+        entity_id:
+          #- switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+          - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+          
+automation 4:
     alias: 'Turn off Lights at Night'
     # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
     # Also turns off outside lights as they don't need to stay on all night.  
@@ -331,7 +355,7 @@ automation 3:
           - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
           - media_player.loki
 
-automation 4:
+automation 5:
     alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
     trigger:
@@ -345,7 +369,7 @@ automation 4:
         - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
         - media_player.loki
 
-automation 5: 
+automation 6: 
     alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
@@ -372,7 +396,7 @@ automation 5:
           - switch.ge_unknown_type4952_id3033_switch_3_0
           #- switch.ge_unknown_type4952_id3033_switch_4_0
 
-automation 6:
+automation 7:
   alias: 'Update Available Notifications'
   trigger:
     platform: state
