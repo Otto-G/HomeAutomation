@@ -152,6 +152,7 @@ sensor 2:
       - type: 'memory_use'
       - type: 'memory_free'
       - type: 'processor_use'
+      - type: 'since_last_boot'
 
 ###################################################
 #              Presence Detection                 #
@@ -240,6 +241,7 @@ group:
         - sensor.ram_use
         - sensor.disk_free_
         - sensor.disk_use_
+        - sensor.since_last_boot
 
     weather:
       name: Weather
