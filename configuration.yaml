@@ -300,10 +300,10 @@ automation 2:
     condition:
       condition: and
       conditions:
-#        - condition: numeric_state
-#          entity_id: sun.sun
-#          value_template: '{{ state.attributes.elevation }}'
-#          below: 0.5
+        - condition: numeric_state
+          entity_id: sun.sun
+          value_template: '{{ state.attributes.elevation }}'
+          below: 0.5
         - condition: time
           weekday:
             - mon
@@ -384,7 +384,7 @@ automation 6:
       condition: and
       conditions:
         - condition: time
-          after: '07:00:00'
+          after: '06:00:00'
         - condition: time
           weekday:
             - mon
