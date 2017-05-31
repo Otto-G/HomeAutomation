@@ -290,56 +290,53 @@ automation:
           - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
           - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
 
-automation 2: 
-    alias: 'Turn on lights in the morning'
-    # Turns on master bedroom lights and living room light in the morning if the sun 
-    # is too low on the weekdays. (TODO: check if work is scheduled in google calendar)
-    trigger: 
-      platform: time
-      after: '06:00:00'
-    condition:
-      condition: and
-      conditions:
-        - condition: numeric_state
-          entity_id: sun.sun
-          value_template: '{{ state.attributes.elevation }}'
-          below: 0.5
-        - condition: time
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
-    action: 
-      - service: homeassistant.turn_on
-        entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
-          - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
-          
-automation 3: 
-    alias: 'Turn on lights in the morning (weekend)'
-    # Turns on master bedroom lights in the morning to help wake up
-    # (TODO: check if work is scheduled in google calendar)
-    trigger: 
-      platform: time
-      after: '08:00:00'
-    condition:
-      condition: and
-      conditions:
+# Commenting this out for use later when getting a z-wave outlet for small light in bedroom
+#automation 2: 
+#    alias: 'Turn on lights in the morning'
+#    # Turns on master bedroom lights and living room light in the morning if the sun 
+#    # is too low on the weekdays. (TODO: check if work is scheduled in google calendar)
+#    trigger: 
+#      platform: time
+#      after: '06:00:00'
+#    condition:
+#      condition: and
+#      conditions:
 #        - condition: numeric_state
 #          entity_id: sun.sun
 #          value_template: '{{ state.attributes.elevation }}'
 #          below: 0.5
-        - condition: time
-          weekday:
-            - sat
-            - sun
+#        - condition: time
+#          weekday:
+#            - mon
+#            - tue
+#            - wed
+#            - thu
+#            - fri
+#    action: 
+#      - service: homeassistant.turn_on
+#        entity_id:
+#          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+#          - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+          
+automation 3: 
+    alias: 'Turn on lights in the morning after alarm'
+    # Turns on master bedroom lights in the morning to help wake up
+    # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
+    trigger: 
+      platform: mqtt
+      topic: wakeup
+#      payload: 'wakeup'
     action: 
       - service: homeassistant.turn_on
         entity_id:
-          #- switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
           - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+      - condition: numeric_state
+        entity_id: sun.sun
+        value_template: '{{ state.attributes.elevation }}'
+        below: 0.5
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
           
 automation 4:
     alias: 'Turn off Lights at Night'
@@ -380,23 +377,14 @@ automation 6:
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
       above: 1.0
-    condition:
-      condition: and
-      conditions:
-        - condition: time
-          after: '06:00:00'
-        - condition: time
-          weekday:
-            - mon
-            - tue
-            - wed
-            - thu
-            - fri
+    condition: time
+      after: '06:00:00'
+
     action: 
       - service: homeassistant.turn_off
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_3_0
-          #- switch.ge_unknown_type4952_id3033_switch_4_0
+          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+          #- switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
 
 automation 7:
   alias: 'Update Available Notifications'
