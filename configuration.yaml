@@ -377,7 +377,8 @@ automation 6:
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
       above: 1.0
-    condition: time
+    condition: 
+      condition: time
       after: '06:00:00'
 
     action: 
