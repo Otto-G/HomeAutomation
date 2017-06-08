@@ -1,7 +1,8 @@
 """
-Demo platform that has two fake switches.
-For more details about this platform, please refer to the documentation
-https://home-assistant.io/components/demo/
+This swith will be used to track when I am sleeping.  The goal is 
+to replace using MQTT and just change the state through HTTP POST
+requests.  This will hopefully be more reliable than the MQTT 
+Tasker plugin.  
 """
 from homeassistant.components.switch import SwitchDevice
 from homeassistant.const import DEVICE_DEFAULT_NAME
@@ -11,12 +12,11 @@ from homeassistant.const import DEVICE_DEFAULT_NAME
 def setup_platform(hass, config, add_devices_callback, discovery_info=None):
     """Set up the demo switches."""
     add_devices_callback([
-        DemoSwitch('Decorative Lights', True, None, True),
-        DemoSwitch('AC', False, 'mdi:air-conditioner', False)
+        sleeping('Decorative Lights', True, None, True),
     ])
 
 
-class DemoSwitch(SwitchDevice):
+class sleeping(SwitchDevice):
     """Representation of a demo switch."""
 
     def __init__(self, name, state, icon, assumed):
@@ -46,16 +46,16 @@ class DemoSwitch(SwitchDevice):
         """Return if the state is based on assumptions."""
         return self._assumed
 
-    @property
-    def current_power_w(self):
-        """Return the current power usage in W."""
-        if self._state:
-            return 100
+#    @property
+#    def current_power_w(self):
+#        """Return the current power usage in W."""
+#        if self._state:
+#            return 100
 
-    @property
-    def today_energy_kwh(self):
-        """Return the today total energy usage in kWh."""
-        return 15
+#    @property
+#    def today_energy_kwh(self):
+#        """Return the today total energy usage in kWh."""
+#        return 15
 
     @property
     def is_on(self):
