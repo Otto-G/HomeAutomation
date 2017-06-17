@@ -48,7 +48,7 @@ history:
 sun:
 
 # Discover some devices automatically
-discovery:
+#discovery:
 
 # Allows you to issue voice commands from the frontend
 conversation:
