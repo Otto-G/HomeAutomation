@@ -97,8 +97,8 @@ media_player:
     platform: cast
     host: 192.168.1.2
 
-#media_player 2:
-#    platform: plex
+media_player 2:
+    platform: plex
 
 #media_player 3:
 #    platform: roku
