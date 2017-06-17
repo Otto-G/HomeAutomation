@@ -12,7 +12,7 @@ from homeassistant.const import DEVICE_DEFAULT_NAME
 def setup_platform(hass, config, add_devices_callback, discovery_info=None):
     """Set up the demo switches."""
     add_devices_callback([
-        sleeping('Decorative Lights', True, None, True),
+        sleeping('Sleeping', True, None, True),
     ])
 
 
@@ -45,17 +45,6 @@ class sleeping(SwitchDevice):
     def assumed_state(self):
         """Return if the state is based on assumptions."""
         return self._assumed
-
-#    @property
-#    def current_power_w(self):
-#        """Return the current power usage in W."""
-#        if self._state:
-#            return 100
-
-#    @property
-#    def today_energy_kwh(self):
-#        """Return the today total energy usage in kWh."""
-#        return 15
 
     @property
     def is_on(self):
