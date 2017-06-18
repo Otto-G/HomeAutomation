@@ -84,8 +84,8 @@ zone 2:
 ###################################################
 
 zwave:
-    usb_path: /dev/ttyACM0
-    config_path: /srv/hass/src/open-zwave-control-panel/config
+    usb_path: /dev/ugen0.6
+#    config_path: /srv/hass/src/open-zwave-control-panel/config
     polling_interval: 10000 # Polling speed in miliseconds
     # High polling number was needed to keep z-wave network stable and working
 
