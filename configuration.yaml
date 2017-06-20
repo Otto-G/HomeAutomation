@@ -20,11 +20,11 @@ homeassistant:
         friendly_name: Michael
     device_tracker.pi_shamu:
         friendly_name: Michael
-    switch.ge_unknown_type4952_id3033_switch_2_0:
+    switch.coach_lights_switch:
         friendly_name: CoachLights
-    switch.ge_unknown_type4952_id3033_switch_3_0:
+    switch.living_room_lights_switch:
         friendly_name: LivingRoomLightFan
-    switch.ge_unknown_type4952_id3033_switch_4_0:
+    switch.bedroom_lights_switch:
         friendly_name: MasterBedroomLightFan
     group.all_automations:
         hidden: false
@@ -84,10 +84,12 @@ zone 2:
 ###################################################
 
 zwave:
-    usb_path: /dev/ugen0.6
+    usb_path: /dev/cuaU0
 #    config_path: /srv/hass/src/open-zwave-control-panel/config
     polling_interval: 10000 # Polling speed in miliseconds
     # High polling number was needed to keep z-wave network stable and working
+    
+    new_entity_ids: true
 
 ###################################################
 #                    Devices                      #
@@ -224,6 +226,8 @@ group:
         - group.raspberry_pi
         - group.weather
         - group.HomeLights
+        - group.HomeLightsTesting
+        - group.all_switches
 
     Control:
       view: yes
@@ -267,9 +271,10 @@ group:
     HomeLights:
       name: HomeLights
       entities:
-        - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
-        - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
-        - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+        - switch.coach_lights_switch # Coach lights
+        - switch.living_room_lights_switch # Livingroom lights
+        - switch.bedroom_lights_switch # Master bedroom lights
+
 
 ###################################################
 #                   Automation                    #
@@ -287,8 +292,8 @@ automation:
     action: 
       - service: homeassistant.turn_on
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
-          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+          - switch.coach_lights_switch # Coach lights
+          - switch.living_room_lights_switch # Livingroom lights
 
 # Commenting this out for use later when getting a z-wave outlet for small light in bedroom
 #automation 2: 
@@ -315,8 +320,8 @@ automation:
 #    action: 
 #      - service: homeassistant.turn_on
 #        entity_id:
-#          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
-#          - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+#          - switch.living_room_lights_switch # Livingroom lights
+#          - switch.bedroom_lights_switch # Master bedroom lights
           
 automation 3: 
     alias: 'Turn on lights in the morning after alarm'
@@ -329,14 +334,14 @@ automation 3:
     action: 
       - service: homeassistant.turn_on
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+          - switch.bedroom_lights_switch # Master bedroom lights
       - condition: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
         below: 0.5
       - service: homeassistant.turn_on
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+          - switch.living_room_lights_switch # Livingroom lights
           
 automation 4:
     alias: 'Turn off Lights at Night'
@@ -350,8 +355,8 @@ automation 4:
     action:
       - service: homeassistant.turn_off
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_2_0 # Coach lights
-          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
+          - switch.coach_lights_switch # Coach lights
+          - switch.living_room_lights_switch # Livingroom lights
           - media_player.loki
 
 automation 5:
@@ -364,8 +369,8 @@ automation 5:
     action:
       - service: homeassistant.turn_off
         entity_id:
-        - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
-        - switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+        - switch.living_room_lights_switch # Livingroom lights
+        - switch.bedroom_lights_switch # Master bedroom lights
         - media_player.loki
 
 automation 6: 
@@ -384,8 +389,7 @@ automation 6:
     action: 
       - service: homeassistant.turn_off
         entity_id:
-          - switch.ge_unknown_type4952_id3033_switch_3_0 # Livingroom lights
-          #- switch.ge_unknown_type4952_id3033_switch_4_0 # Master bedroom lights
+          - switch.living_room_lights_switch # Livingroom lights
 
 automation 7:
   alias: 'Update Available Notifications'
