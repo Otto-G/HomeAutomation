@@ -1,21 +1,21 @@
 # HomeAutomation
 Automating different parts of the house.
-This is using [home-assistant](https://home-assistant.io/) as the base control.  Home assistant uses github as their base repository for there code [here](https://github.com/home-assistant/home-assistant) 
+This is using [home-assistant](https://home-assistant.io/) as the base control.  Home assistant uses github as their base repository for their code [here](https://github.com/home-assistant/home-assistant) 
 
 ## Tasks that need to be run based on the day
 Monday - Friday
- - [ ] Morning: Automated light turning on linked to Google calendar
-   - [x] Currently only based on time
- - [x] Turn on Bedroom light after waking up.  
-   - Tied to Sleep as android
+ - [x] Turn on Bedroom light and living room light as needed after waking up.  
+   - Tied to Sleep as android tracking stop (run in Tasker)
  - [ ] Turn on Main kitchen light after waking up
    - [ ] Need to add kitchen master and slave switches
  - [x] Start podcast in morning after waking up
    - Uses [Tasker](https://tasker.dinglisch.net/) and [Beyondpod](https://www.beyondpod.mobi/android/index.htm)
    
 Saturday - Sunday
- - [ ] Turn on lights after waking up if needed
- - [ ] Start podcast in the morning after waking up
+ - [x] Turn on lights after waking up if needed
+   - Tied to sleep as android tracking stop (run in Tasker)
+ - [x] Start podcast in the morning after waking up
+   - Tied to sleep as android tracking stop (run in Tasker)
 
 ## Tasks run every day
 Open/Close blinds
@@ -45,15 +45,14 @@ Turn off lights at night
 Washer dryer
  - [ ] When washer or dryer is finished, send email/other alert
    - [x] Turn on washer/dryer room light
-     - [x] Have automatic light
+     - [x] Have automatic light sensor
    - [ ] Need to get current meter
 
 
 
 ## Parts list
 
- - [ ] Synology NAS
-   - [ ] May substitute for freenas box
+ - [ ] Freenas box
  - [ ] Z-Wave Blinds (12 windows)
    - [ ] Back living group (4 windows: Dining room, Living room)
    - [ ] Front living group (2 windows: Front room)
