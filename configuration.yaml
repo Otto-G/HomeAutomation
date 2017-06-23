@@ -209,6 +209,26 @@ mqtt:
   client_id: home-assistant-1
   username: !secret mqtt_user
   password: !secret mqtt_pass
+  
+###################################################
+#                  Transmission                   #
+###################################################
+
+switch:
+  platform: transmission
+  host: 192.168.1.2
+#  username: !secret transmission_user
+#  password: !secret transmission_pass
+
+sensor:
+  - platform: transmission
+    host: 192.168.1.2
+#    username: !secret transmission_user
+#    password: !secret transmission_pass
+    monitored_variables:
+      - 'current_status'
+      - 'download_speed'
+      - 'upload_speed'
 
 ###################################################
 #                     Shipping                    #
