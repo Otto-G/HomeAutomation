@@ -261,11 +261,12 @@ group:
       view: yes
       entities: 
         - device_tracker.pi_shamu
-        - group.raspberry_pi
+        - group.Freenas
         - group.weather
         - group.HomeLights
         - group.HomeLightsTesting
         - group.all_switches
+        - group.Shipping
 
     Control:
       view: yes
@@ -275,8 +276,8 @@ group:
 
 ### Details
 
-    raspberry_pi:
-      name: Raspberry_Pi
+    Freenas:
+      name: Freenas
       entities: 
         - sensor.cpu_use
         - sensor.ram_use_2
@@ -284,6 +285,10 @@ group:
         - sensor.disk_free_
         - sensor.disk_use_
         - sensor.since_last_boot
+        - sensor.transmission_status
+        - sensor.transmission_down_speed
+        - sensor.transmission_up_speed
+        - switch.transmission_turtle_mode
 
     weather:
       name: Weather
@@ -313,6 +318,12 @@ group:
         - switch.living_room_lights_switch # Livingroom lights
         - switch.bedroom_lights_switch # Master bedroom lights
 
+    Shipping
+      name: Shipping
+      entities:
+        - sensor.fedex
+        - senaor.ups
+        - sensor.usps
 
 ###################################################
 #                   Automation                    #
