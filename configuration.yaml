@@ -220,7 +220,7 @@ switch:
 #  username: !secret transmission_user
 #  password: !secret transmission_pass
 
-sensor:
+sensor 3:
   - platform: transmission
     host: 192.168.1.2
 #    username: !secret transmission_user
@@ -234,17 +234,17 @@ sensor:
 #                     Shipping                    #
 ###################################################
 
-sensor:
+sensor 4:
   - platform: fedex
     username: !secret fedex_user
     password: !secret fedex_pass
     
-sensor:
+sensor 5:
   - platform: ups
     username: !secret ups_user
     password: !secret ups_pass
     
-sensor:
+sensor 6:
   - platform: usps
     username: !secret usps_user
     password: !secret usps_pass
