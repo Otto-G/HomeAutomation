@@ -318,7 +318,7 @@ group:
         - switch.living_room_lights_switch # Livingroom lights
         - switch.bedroom_lights_switch # Master bedroom lights
 
-    Shipping
+    Shipping:
       name: Shipping
       entities:
         - sensor.fedex
