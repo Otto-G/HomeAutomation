@@ -144,17 +144,32 @@ camera:
 
 # System resources
 sensor 2: 
-    platform: systemmonitor
-    resources: 
-      - type: 'disk_use_percent'
-        arg: '/'
-      - type: 'disk_free'
-        arg: '/'
-      - type: 'memory_use_percent'
-      - type: 'memory_use'
-      - type: 'memory_free'
-      - type: 'processor_use'
-      - type: 'since_last_boot'
+    - platform: systemmonitor
+      resources: 
+        - type: 'disk_use_percent'
+          arg: '/'
+        - type: 'disk_free'
+          arg: '/'
+        - type: 'memory_use_percent'
+        - type: 'memory_use'
+        - type: 'memory_free'
+        - type: 'processor_use'
+        - type: 'since_last_boot'
+    
+    - platform: command_line
+      name: cpu_0_temperature
+      command: smartctl dev.cpu.0 | grep temperature | cut -c 24-27
+      unit_of_measurement: "°C"
+    
+    - platform: command_line
+      name: HD_1_Temperature
+      command: smartctl -a /dev/ada0 | grep Temperature_Celsius | cut -c 88-90
+      unit_of_measurement: "°C"
+
+    - platform: command_line
+      name: HD_2_Temperature
+      command: smartctl -a /dev/ada1 | grep Temperature_Celsius | cut -c 88-90
+      unit_of_measurement: "°C"
 
 ###################################################
 #              Presence Detection                 #
