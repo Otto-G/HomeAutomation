@@ -158,17 +158,17 @@ sensor 2:
     
     - platform: command_line
       name: cpu_0_temperature
-      command: smartctl dev.cpu.0 | grep temperature | cut -c 24-27
+      command: cat /home/.homeassistant/HomeAutomation/cpu0temp.txt
       unit_of_measurement: "°C"
     
     - platform: command_line
       name: HD_1_Temperature
-      command: smartctl -a /dev/ada0 | grep Temperature_Celsius | cut -c 88-90
+      command: cat /home/.homeassistant/HomeAutomation/HD1temp.txt
       unit_of_measurement: "°C"
 
     - platform: command_line
       name: HD_2_Temperature
-      command: smartctl -a /dev/ada1 | grep Temperature_Celsius | cut -c 88-90
+      command: cat /home/.homeassistant/HomeAutomation/HD2temp.txt
       unit_of_measurement: "°C"
 
 ###################################################
