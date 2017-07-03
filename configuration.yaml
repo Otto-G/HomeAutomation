@@ -295,10 +295,13 @@ group:
       name: Freenas
       entities: 
         - sensor.cpu_use
+        - sensor.cpu_0_temperature
         - sensor.ram_use_2
         - sensor.ram_use
         - sensor.disk_free_
-        - sensor.disk_use_
+#        - sensor.disk_use_
+        - sensor.hd_1_temperature
+        - sensor.hd_2_temperature
         - sensor.since_last_boot
         - sensor.transmission_status
         - sensor.transmission_down_speed
