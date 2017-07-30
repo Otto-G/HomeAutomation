@@ -37,6 +37,7 @@ homeassistant:
 # Configuration for the website
 http:
     api_password: !secret api_pass_code
+    base_url: !secret base_url
     
 # Checks for available updates
 updater:
