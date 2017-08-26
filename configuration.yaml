@@ -341,7 +341,7 @@ group:
       name: Shipping
       entities:
         - sensor.fedex
-        - senaor.ups
+        - sensor.ups
         - sensor.usps_packages
 
 ###################################################
