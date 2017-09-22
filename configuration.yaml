@@ -343,7 +343,7 @@ group:
       entities:
         - sensor.fedex
         - sensor.ups
-        - sensor.usps_packages
+        - sensor.usps_mail
 
 ###################################################
 #                   Automation                    #
