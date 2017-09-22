@@ -14,19 +14,19 @@ homeassistant: # Name of the location where Home Assistant is running
 ###################################################
 #                 Customization                   #
 ###################################################
-  customize: 
-    device_tracker.nexus6connect:
-        friendly_name: Michael
-    device_tracker.pi_shamu:
-        friendly_name: Michael
-    switch.coach_lights_switch:
-        friendly_name: CoachLights
-    switch.living_room_ligh_switch:
-        friendly_name: LivingRoomLightFan
-    switch.bedroom_lights_switch:
-        friendly_name: MasterBedroomLightFan
-    group.all_automations:
-        hidden: false
+  customize: !include customize.yaml
+#    device_tracker.nexus6connect:
+#        friendly_name: Michael
+#    device_tracker.pi_shamu:
+#        friendly_name: Michael
+#    switch.coach_lights_switch:
+#        friendly_name: CoachLights
+#    switch.living_room_ligh_switch:
+#        friendly_name: LivingRoomLightFan
+#    switch.bedroom_lights_switch:
+#        friendly_name: MasterBedroomLightFan
+#    group.all_automations:
+#        hidden: false
 
 
 ###################################################
@@ -55,6 +55,9 @@ conversation:
 
 # View all events in a logbook
 logbook:
+
+# Enable config screen
+config:
 
 # Enables the frontend
 frontend:
