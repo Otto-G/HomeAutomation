@@ -1,0 +1,16 @@
+device_tracker.pi_shamu:
+  friendly_name: Michael
+switch.living_room_ligh_switch:
+  friendly_name: Living room lights
+switch.bedroom_lights_switch:
+  friendly_name: Bedroom lights
+switch.coach_lights_switch:
+  friendly_name: Coach lights
+sensor.cpu_0_temperature:
+  friendly_name: CPU temperature
+sensor.hd_1_temperature:
+  friendly_name: HD 1 Temperature
+sensor.hd_2_temperature:
+  friendly_name: HD 2 Temperature
+camera.homeweatherradar:
+  friendly_name: Home Weather Radar
