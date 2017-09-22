@@ -22,7 +22,7 @@ homeassistant:
         friendly_name: Michael
     switch.coach_lights_switch:
         friendly_name: CoachLights
-    switch.living_room_lights_switch:
+    switch.living_room_ligh_switch:
         friendly_name: LivingRoomLightFan
     switch.bedroom_lights_switch:
         friendly_name: MasterBedroomLightFan
@@ -333,7 +333,7 @@ group:
       name: HomeLights
       entities:
         - switch.coach_lights_switch # Coach lights
-        - switch.living_room_lights_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Livingroom lights
         - switch.bedroom_lights_switch # Master bedroom lights
 
     Shipping:
@@ -360,7 +360,7 @@ automation:
       - service: homeassistant.turn_on
         entity_id:
           - switch.coach_lights_switch # Coach lights
-          - switch.living_room_lights_switch # Livingroom lights
+          - switch.living_room_ligh_switch # Livingroom lights
 
 # Commenting this out for use later when getting a z-wave outlet for small light in bedroom
 #automation 2: 
@@ -408,7 +408,7 @@ automation 3:
         below: 0.5
       - service: homeassistant.turn_on
         entity_id:
-          - switch.living_room_lights_switch # Livingroom lights
+          - switch.living_room_ligh_switch # Livingroom lights
           
 automation 4:
     alias: 'Turn off Lights at Night'
@@ -423,7 +423,7 @@ automation 4:
       - service: homeassistant.turn_off
         entity_id:
           - switch.coach_lights_switch # Coach lights
-          - switch.living_room_lights_switch # Livingroom lights
+          - switch.living_room_ligh_switch # Livingroom lights
           - media_player.loki
 
 automation 5:
@@ -436,7 +436,7 @@ automation 5:
     action:
       - service: homeassistant.turn_off
         entity_id:
-        - switch.living_room_lights_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Livingroom lights
         - switch.bedroom_lights_switch # Master bedroom lights
         - media_player.loki
 
@@ -456,7 +456,7 @@ automation 6:
     action: 
       - service: homeassistant.turn_off
         entity_id:
-          - switch.living_room_lights_switch # Livingroom lights
+          - switch.living_room_ligh_switch # Livingroom lights
 
 automation 7:
   alias: 'Update Available Notifications'
