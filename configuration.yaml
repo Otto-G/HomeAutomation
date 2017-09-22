@@ -344,7 +344,7 @@ group:
         - sensor.fedex
         - sensor.ups
         - sensor.usps_mail
-
+        - sensor.usps_packages
 ###################################################
 #                   Automation                    #
 ###################################################
