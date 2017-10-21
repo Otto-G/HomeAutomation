@@ -284,6 +284,7 @@ group:
     Control:
       view: yes
       entities:
+        - climate.living_room
         - group.media_players
         - group.all_automations
 
