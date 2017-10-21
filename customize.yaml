@@ -14,4 +14,5 @@ sensor.hd_2_temperature:
   friendly_name: HD 2 Temperature
 camera.homeweatherradar:
   friendly_name: Home Weather Radar
-group.all_automations: {}
+group.all_automations:
+  friendly_name: all automations
