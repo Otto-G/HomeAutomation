@@ -52,7 +52,7 @@ Washer dryer
 
 ## Parts list
 
- - [ ] Freenas box
+ - [x] Freenas box
  - [ ] Z-Wave Blinds (12 windows)
    - [ ] Back living group (4 windows: Dining room, Living room)
    - [ ] Front living group (2 windows: Front room)
@@ -71,9 +71,10 @@ Washer dryer
      - [ ] Switch for fan (1 main switch)
      - [ ] Master bath light group (1 main switch)
    - [ ] Auxilary group (2 main switches (+ 1 aux switch?))
-     - [ ] Hallway light (1 main switch + 1 aux switch)
-     - [ ] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
+     - [x] Hallway light (1 main switch + 1 aux switch [aux switch not needed])
+     - [x] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Energy meter for washer & dryer
+ - [x] Thermostat (Nest E)
 
 ## Linked Apps
  - [Sleep as android](http://sleep.urbandroid.org/)
