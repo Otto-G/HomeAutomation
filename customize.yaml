@@ -16,3 +16,9 @@ camera.homeweatherradar:
   friendly_name: Home Weather Radar
 group.all_automations:
   friendly_name: all automations
+switch.tv_outlet_switch:
+  friendly_name: TV outlet
+switch.entryway_light_switch:
+  friendly_name: Entryway light
+switch.hall_light_switch:
+  friendly_name: Hall light
