@@ -334,6 +334,9 @@ group:
         - switch.coach_lights_switch # Coach lights
         - switch.living_room_ligh_switch # Livingroom lights
         - switch.bedroom_lights_switch # Master bedroom lights
+        - switch.entryway_light_switch # Entryway lights
+        - switch.hall_light_switch # Hall light near bedroom
+        - switch.tv_outlet_switch # Switch to turn TV on-off
 
     Shipping:
       name: Shipping
