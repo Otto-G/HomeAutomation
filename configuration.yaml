@@ -409,7 +409,7 @@ automation 3:
       - service: climage.set_operation_mode
         data:
           entity_id: climate.living_room
-          operation_mode: Auto
+          operation_mode: auto
       - condition: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
@@ -453,7 +453,7 @@ automation 5:
       - service: climate.set_operation_mode
         data:
           entity_id: climate.living_room
-          operation_mode: Eco
+          operation_mode: eco
 
 automation 6: 
     alias: 'Turn off lights in the morning if needed'
