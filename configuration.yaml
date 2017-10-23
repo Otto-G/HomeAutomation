@@ -501,7 +501,7 @@ automation 8:
         - switch.entryway_light_switch
         - switch.hall_light_switch
 
-Automation 9:
+automation 9:
     alias: 'Away Mode'
     # Sets house to away mode
     trigger:
@@ -510,12 +510,12 @@ Automation 9:
       from: 'home'
       to: 'not-home'
     action:
-    - service: climate.set_operation_mode
+      - service: climate.set_operation_mode
         data:
           entity_id: climate.living_room
           operation_mode: 'eco'
 
-Automation 10:
+automation 10:
     alias: 'Home'
     # Sets house to at home mode
     trigger:
@@ -524,7 +524,7 @@ Automation 10:
       from: 'not-home'
       to: 'home'
     action:
-    - service: climate.set_operation_mode
+      - service: climate.set_operation_mode
         data:
           entity_id: climate.living_room
           operation_mode: 'auto'
