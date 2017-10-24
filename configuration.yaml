@@ -508,7 +508,7 @@ automation 9:
       platform: state
       entity_id: device_tracker.pi_shamu
       from: 'home'
-      to: 'not-home'
+      to: 'not home'
     action:
       - service: climate.set_operation_mode
         data:
@@ -521,7 +521,7 @@ automation 10:
     trigger:
       platform: state
       entity_id: device_tracker.pi_shamu
-      from: 'not-home'
+      from: 'not home'
       to: 'home'
     action:
       - service: climate.set_operation_mode
