@@ -505,10 +505,10 @@ automation 9:
     alias: 'Away Mode'
     # Sets house to away mode
     trigger:
-      platform: state
+      platform: zone
+      event: leave
+      zone: zone.home
       entity_id: device_tracker.pi_shamu
-      from: 'home'
-      to: 'not home'
     action:
       - service: climate.set_operation_mode
         data:
@@ -519,10 +519,10 @@ automation 10:
     alias: 'Home'
     # Sets house to at home mode
     trigger:
-      platform: state
+      platform: zone
+      event: enter
+      zone: zone.home
       entity_id: device_tracker.pi_shamu
-      from: 'not home'
-      to: 'home'
     action:
       - service: climate.set_operation_mode
         data:
