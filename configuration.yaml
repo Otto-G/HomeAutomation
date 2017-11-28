@@ -51,6 +51,9 @@ config:
 # Enables the frontend
 frontend:
 
+# Enable map screen
+map:
+
 # Show links to resources in log and frontend
 #introduction:
 
