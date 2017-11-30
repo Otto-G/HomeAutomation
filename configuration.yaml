@@ -437,6 +437,9 @@ automation 4:
           - switch.coach_lights_switch # Coach lights
           - switch.living_room_ligh_switch # Livingroom lights
           - media_player.loki
+          - switch.hall_light_switch
+          - switch.entryway_light_switch
+          - switch.tv_outlet_switch
 
 automation 5:
     alias: 'Sleep time'
