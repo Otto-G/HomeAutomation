@@ -498,6 +498,9 @@ automation 8:
       topic: bedtime
 #      payload: 'bedtime'
     action:
+      - condition: state
+        entity_id: switch.living_room_ligh_switch
+        state: on
       - service: homeassistant.turn_off
         entity_id:
         - switch.living_room_ligh_switch # Livingroom lights
