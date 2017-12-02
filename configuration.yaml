@@ -360,10 +360,10 @@ automation:
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
   - trigger:
-      platform: numeric_state
-      entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
-      below: 1.0
+     - platform: numeric_state
+     - entity_id: sun.sun
+     - value_template: '{{ state.attributes.elevation }}'
+     - below: 1.0
   - action: 
       - service: homeassistant.turn_on
       - entity_id:
