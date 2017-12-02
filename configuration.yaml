@@ -367,8 +367,8 @@ automation:
     action:
       service: homeassistant.turn_on
       entity_id:
-          - switch.coach_lights_switch # Coach lights
-          - switch.living_room_ligh_switch # Livingroom lights
+        - switch.coach_lights_switch # Coach lights
+        - switch.living_room_ligh_switch # Livingroom lights
 
 automation 2:
   - alias: 'Turn on lights in the morning after alarm'
