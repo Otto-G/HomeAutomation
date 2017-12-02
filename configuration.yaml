@@ -356,7 +356,7 @@ group:
 ###################################################
 
 # Automation
-automation: 
+automation:
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
     trigger:
@@ -364,7 +364,7 @@ automation:
        - entity_id: sun.sun
        - value_template: '{{ state.attributes.elevation }}'
        - below: 1.0
-    action: 
+    action:
         - service: homeassistant.turn_on
         - entity_id:
             - switch.coach_lights_switch # Coach lights
@@ -373,10 +373,10 @@ automation:
   - alias: 'Turn on lights in the morning after alarm'
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
-    trigger: 
+    trigger:
         platform: mqtt
         topic: wakeup
-    action: 
+    action:
         - service: homeassistant.turn_on
           entity_id:
             - switch.bedroom_lights_switch # Master bedroom lights
@@ -432,16 +432,16 @@ automation:
   - alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
-    trigger: 
+    trigger:
         platform: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
         above: 1.0
-    condition: 
+    condition:
         condition: time
         after: '06:00:00'
 
-    action: 
+    action:
         - service: homeassistant.turn_off
           entity_id:
             - switch.living_room_ligh_switch # Livingroom lights
