@@ -440,7 +440,6 @@ automation:
     condition:
       condition: time
       after: '06:00:00'
-
     action:
       service: homeassistant.turn_off
       entity_id:
