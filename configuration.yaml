@@ -460,7 +460,8 @@ automation:
     trigger:
       platform: mqtt
       topic: bedtime
-    condition: state
+    condition: 
+      condition: state
       entity_id: switch.living_room_ligh_switch
       state: on
     action:
