@@ -359,16 +359,16 @@ group:
 automation: 
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
-  - trigger:
-     - platform: numeric_state
-     - entity_id: sun.sun
-     - value_template: '{{ state.attributes.elevation }}'
-     - below: 1.0
-  - action: 
-      - service: homeassistant.turn_on
-      - entity_id:
-          - switch.coach_lights_switch # Coach lights
-          - switch.living_room_ligh_switch # Livingroom lights
+    - trigger:
+       - platform: numeric_state
+       - entity_id: sun.sun
+       - value_template: '{{ state.attributes.elevation }}'
+       - below: 1.0
+    - action: 
+        - service: homeassistant.turn_on
+        - entity_id:
+            - switch.coach_lights_switch # Coach lights
+            - switch.living_room_ligh_switch # Livingroom lights
 
 # Commenting this out for use later when getting a z-wave outlet for small light in bedroom
 #automation 2: 
@@ -402,142 +402,142 @@ automation:
   - alias: 'Turn on lights in the morning after alarm'
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
-  - trigger: 
-      platform: mqtt
-      topic: wakeup
-#      payload: 'wakeup'
-  - action: 
-      - service: homeassistant.turn_on
-        entity_id:
-          - switch.bedroom_lights_switch # Master bedroom lights
-      - service: climate.set_operation_mode
-        data:
-          entity_id: climate.living_room
-          operation_mode: 'auto'
-      - condition: numeric_state
-        entity_id: sun.sun
-        value_template: '{{ state.attributes.elevation }}'
-        below: 0.5
-      - service: homeassistant.turn_on
-        entity_id:
-          - switch.living_room_ligh_switch # Livingroom lights
+    - trigger: 
+        platform: mqtt
+        topic: wakeup
+#        payload: 'wakeup'
+    - action: 
+        - service: homeassistant.turn_on
+          entity_id:
+            - switch.bedroom_lights_switch # Master bedroom lights
+        - service: climate.set_operation_mode
+          data:
+            entity_id: climate.living_room
+            operation_mode: 'auto'
+        - condition: numeric_state
+          entity_id: sun.sun
+          value_template: '{{ state.attributes.elevation }}'
+          below: 0.5
+        - service: homeassistant.turn_on
+          entity_id:
+            - switch.living_room_ligh_switch # Livingroom lights
           
 #automation 4:
   - alias: 'Turn off Lights at Night'
     # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
     # Also turns off outside lights as they don't need to stay on all night.  
-  - trigger:
-      platform: time
-      hours: 2
-      minutes: 0
-      seconds: 0
-  - action:
-      - service: homeassistant.turn_off
-        entity_id:
-          - switch.coach_lights_switch # Coach lights
-          - switch.living_room_ligh_switch # Livingroom lights
-          - media_player.loki
-          - switch.hall_light_switch
-          - switch.entryway_light_switch
-          - switch.tv_outlet_switch
+    - trigger:
+        platform: time
+        hours: 2
+        minutes: 0
+        seconds: 0
+    - action:
+        - service: homeassistant.turn_off
+          entity_id:
+            - switch.coach_lights_switch # Coach lights
+            - switch.living_room_ligh_switch # Livingroom lights
+            - media_player.loki
+            - switch.hall_light_switch
+            - switch.entryway_light_switch
+            - switch.tv_outlet_switch
 
 #automation 5:
   - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
-  - trigger:
-      platform: mqtt
-      topic: sleep
-#      payload: 'sleep'
-  - action:
-      - service: homeassistant.turn_off
-        entity_id:
-        - switch.living_room_ligh_switch # Livingroom lights
-        - switch.bedroom_lights_switch # Master bedroom lights
-        - media_player.loki
-        - switch.hall_light_switch
-        - switch.entryway_light_switch
-        - switch.tv_outlet_switch
-      - service: climate.set_operation_mode
-        data:
-          entity_id: climate.living_room
-          operation_mode: 'eco'
+    - trigger:
+        platform: mqtt
+        topic: sleep
+#        payload: 'sleep'
+    - action:
+        - service: homeassistant.turn_off
+          entity_id:
+          - switch.living_room_ligh_switch # Livingroom lights
+          - switch.bedroom_lights_switch # Master bedroom lights
+          - media_player.loki
+          - switch.hall_light_switch
+          - switch.entryway_light_switch
+          - switch.tv_outlet_switch
+        - service: climate.set_operation_mode
+          data:
+            entity_id: climate.living_room
+            operation_mode: 'eco'
 
 #automation 6: 
   - alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
-  - trigger: 
-      platform: numeric_state
-      entity_id: sun.sun
-      value_template: '{{ state.attributes.elevation }}'
-      above: 1.0
-  - condition: 
-      condition: time
-      after: '06:00:00'
+    - trigger: 
+        platform: numeric_state
+        entity_id: sun.sun
+        value_template: '{{ state.attributes.elevation }}'
+        above: 1.0
+    - condition: 
+        condition: time
+        after: '06:00:00'
 
-  - action: 
-      - service: homeassistant.turn_off
-        entity_id:
-          - switch.living_room_ligh_switch # Livingroom lights
+    - action: 
+        - service: homeassistant.turn_off
+          entity_id:
+            - switch.living_room_ligh_switch # Livingroom lights
 
 #automation 7:
   - alias: 'Update Available Notifications'
-  - trigger:
-      platform: state
-      entity_id: updater.updater
-  - action:
-      service: notify.notify
-      data:
-        message: 'Update for Home Assistant is available.'
+    - trigger:
+        platform: state
+        entity_id: updater.updater
+    - action:
+        service: notify.notify
+        data:
+          message: 'Update for Home Assistant is available.'
       
 #automation 8:
   - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
-  - trigger:
-      platform: mqtt
-      topic: bedtime
-#      payload: 'bedtime'
-  - action:
-      - condition: state
-        entity_id: switch.living_room_ligh_switch
-        state: on
-      - service: homeassistant.turn_off
-        entity_id:
-        - switch.living_room_ligh_switch # Livingroom lights
-        - switch.tv_outlet_switch
-        - media_player.loki
-      - service: homeassistant.turn_on
-        entity_id:
-        - switch.entryway_light_switch
-        - switch.hall_light_switch
+    - trigger:
+        platform: mqtt
+        topic: bedtime
+#        payload: 'bedtime'
+    - action:
+        - condition: state
+          entity_id: switch.living_room_ligh_switch
+          state: on
+        - service: homeassistant.turn_off
+          entity_id:
+          - switch.living_room_ligh_switch # Livingroom lights
+          - switch.tv_outlet_switch
+          - media_player.loki
+        - service: homeassistant.turn_on
+          entity_id:
+          - switch.entryway_light_switch
+          - switch.hall_light_switch
 
 #automation 9:
   - alias: 'Away Mode'
     # Sets house to away mode
-  - trigger:
-      platform: zone
-      event: leave
-      zone: zone.home
-      entity_id: device_tracker.pi_shamu
-  - action:
-      - service: climate.set_operation_mode
-        data:
-          entity_id: climate.living_room
-          operation_mode: 'eco'
+    - trigger:
+        platform: zone
+        event: leave
+        zone: zone.home
+        entity_id: device_tracker.pi_shamu
+    - action:
+        - service: climate.set_operation_mode
+          data:
+            entity_id: climate.living_room
+            operation_mode: 'eco'
 
 #automation 10:
   - alias: 'Home'
     # Sets house to at home mode
-  - trigger:
-      platform: zone
-      event: enter
-      zone: zone.home
-      entity_id: device_tracker.pi_shamu
-  - action:
-      - service: climate.set_operation_mode
-        data:
-          entity_id: climate.living_room
-          operation_mode: 'auto'
-          
+    - trigger:
+        platform: zone
+        event: enter
+        zone: zone.home
+        entity_id: device_tracker.pi_shamu
+    - action:
+        - service: climate.set_operation_mode
+          data:
+            entity_id: climate.living_room
+            operation_mode: 'auto'
+            
 # Scripts
 script: 
