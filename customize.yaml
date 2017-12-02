@@ -22,3 +22,5 @@ switch.entryway_light_switch:
   friendly_name: Entryway light
 switch.hall_light_switch:
   friendly_name: Hall light
+zone.home:
+  radius: 150

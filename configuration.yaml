@@ -50,7 +50,7 @@ config:
 
 # Enables the frontend
 frontend:
-  javascript_version: latest
+#  javascript_version: latest 
 
 # Enable map screen
 map:
@@ -357,14 +357,14 @@ group:
 
 # Automation
 automation: 
-    alias: 'Turn on Lights at Dusk'
+  - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
-    trigger:
+  - trigger:
       platform: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
       below: 1.0
-    action: 
+  - action: 
       - service: homeassistant.turn_on
         entity_id:
           - switch.coach_lights_switch # Coach lights
@@ -399,14 +399,14 @@ automation:
 #          - switch.bedroom_lights_switch # Master bedroom lights
           
 automation 3: 
-    alias: 'Turn on lights in the morning after alarm'
+  - alias: 'Turn on lights in the morning after alarm'
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
-    trigger: 
+  - trigger: 
       platform: mqtt
       topic: wakeup
 #      payload: 'wakeup'
-    action: 
+  - action: 
       - service: homeassistant.turn_on
         entity_id:
           - switch.bedroom_lights_switch # Master bedroom lights
@@ -423,15 +423,15 @@ automation 3:
           - switch.living_room_ligh_switch # Livingroom lights
           
 automation 4:
-    alias: 'Turn off Lights at Night'
+  - alias: 'Turn off Lights at Night'
     # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
     # Also turns off outside lights as they don't need to stay on all night.  
-    trigger:
+  - trigger:
       platform: time
       hours: 2
       minutes: 0
       seconds: 0
-    action:
+  - action:
       - service: homeassistant.turn_off
         entity_id:
           - switch.coach_lights_switch # Coach lights
@@ -442,13 +442,13 @@ automation 4:
           - switch.tv_outlet_switch
 
 automation 5:
-    alias: 'Sleep time'
+  - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
-    trigger:
+  - trigger:
       platform: mqtt
       topic: sleep
 #      payload: 'sleep'
-    action:
+  - action:
       - service: homeassistant.turn_off
         entity_id:
         - switch.living_room_ligh_switch # Livingroom lights
@@ -463,41 +463,41 @@ automation 5:
           operation_mode: 'eco'
 
 automation 6: 
-    alias: 'Turn off lights in the morning if needed'
+  - alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
-    trigger: 
+  - trigger: 
       platform: numeric_state
       entity_id: sun.sun
       value_template: '{{ state.attributes.elevation }}'
       above: 1.0
-    condition: 
+  - condition: 
       condition: time
       after: '06:00:00'
 
-    action: 
+  - action: 
       - service: homeassistant.turn_off
         entity_id:
           - switch.living_room_ligh_switch # Livingroom lights
 
 automation 7:
-  alias: 'Update Available Notifications'
-  trigger:
-    platform: state
-    entity_id: updater.updater
-  action:
-    service: notify.notify
-    data:
-      message: 'Update for Home Assistant is available.'
+  - alias: 'Update Available Notifications'
+  - trigger:
+      platform: state
+      entity_id: updater.updater
+  - action:
+      service: notify.notify
+      data:
+        message: 'Update for Home Assistant is available.'
       
 automation 8:
-    alias: 'Bedtime'
+  - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
-    trigger:
+  - trigger:
       platform: mqtt
       topic: bedtime
 #      payload: 'bedtime'
-    action:
+  - action:
       - condition: state
         entity_id: switch.living_room_ligh_switch
         state: on
@@ -512,28 +512,28 @@ automation 8:
         - switch.hall_light_switch
 
 automation 9:
-    alias: 'Away Mode'
+  - alias: 'Away Mode'
     # Sets house to away mode
-    trigger:
+  - trigger:
       platform: zone
       event: leave
       zone: zone.home
       entity_id: device_tracker.pi_shamu
-    action:
+  - action:
       - service: climate.set_operation_mode
         data:
           entity_id: climate.living_room
           operation_mode: 'eco'
 
 automation 10:
-    alias: 'Home'
+  - alias: 'Home'
     # Sets house to at home mode
-    trigger:
+  - trigger:
       platform: zone
       event: enter
       zone: zone.home
       entity_id: device_tracker.pi_shamu
-    action:
+  - action:
       - service: climate.set_operation_mode
         data:
           entity_id: climate.living_room
