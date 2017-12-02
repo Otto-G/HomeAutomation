@@ -356,7 +356,7 @@ group:
 ###################################################
 
 # Automation
-automation: 
+automation 1: 
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
   - trigger:
