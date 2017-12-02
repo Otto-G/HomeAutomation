@@ -366,7 +366,7 @@ automation:
       below: 1.0
   - action: 
       - service: homeassistant.turn_on
-        entity_id:
+      - entity_id:
           - switch.coach_lights_switch # Coach lights
           - switch.living_room_ligh_switch # Livingroom lights
 
