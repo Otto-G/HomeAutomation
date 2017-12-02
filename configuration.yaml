@@ -360,13 +360,13 @@ automation:
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
     trigger:
-      - platform: numeric_state
-      - entity_id: sun.sun
-      - value_template: '{{ state.attributes.elevation }}'
-      - below: 1.0
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: 1.0
     action:
-      - service: homeassistant.turn_on
-      - entity_id:
+      service: homeassistant.turn_on
+      entity_id:
           - switch.coach_lights_switch # Coach lights
           - switch.living_room_ligh_switch # Livingroom lights
 
@@ -401,14 +401,14 @@ automation:
       minutes: 0
       seconds: 0
     action:
-      - service: homeassistant.turn_off
-        entity_id:
-          - switch.coach_lights_switch # Coach lights
-          - switch.living_room_ligh_switch # Livingroom lights
-          - media_player.loki
-          - switch.hall_light_switch
-          - switch.entryway_light_switch
-          - switch.tv_outlet_switch
+      service: homeassistant.turn_off
+      entity_id:
+        - switch.coach_lights_switch # Coach lights
+        - switch.living_room_ligh_switch # Livingroom lights
+        - media_player.loki
+        - switch.hall_light_switch
+        - switch.entryway_light_switch
+        - switch.tv_outlet_switch
 
   - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
@@ -442,9 +442,9 @@ automation:
       after: '06:00:00'
 
     action:
-      - service: homeassistant.turn_off
-        entity_id:
-          - switch.living_room_ligh_switch # Livingroom lights
+      service: homeassistant.turn_off
+      entity_id:
+        - switch.living_room_ligh_switch # Livingroom lights
 
   - alias: 'Update Available Notifications'
     trigger:
@@ -460,10 +460,10 @@ automation:
     trigger:
       platform: mqtt
       topic: bedtime
+    condition: state
+      entity_id: switch.living_room_ligh_switch
+      state: on
     action:
-      - condition: state
-        entity_id: switch.living_room_ligh_switch
-        state: on
       - service: homeassistant.turn_off
         entity_id:
         - switch.living_room_ligh_switch # Livingroom lights
@@ -482,10 +482,10 @@ automation:
       zone: zone.home
       entity_id: device_tracker.pi_shamu
     action:
-      - service: climate.set_operation_mode
-        data:
-          entity_id: climate.living_room
-          operation_mode: 'eco'
+      service: climate.set_operation_mode
+      data:
+        entity_id: climate.living_room
+        operation_mode: 'eco'
 
   - alias: 'Home'
     # Sets house to at home mode
@@ -495,10 +495,10 @@ automation:
       zone: zone.home
       entity_id: device_tracker.pi_shamu
     action:
-      - service: climate.set_operation_mode
-        data:
-          entity_id: climate.living_room
-          operation_mode: 'auto'
+      service: climate.set_operation_mode
+      data:
+        entity_id: climate.living_room
+        operation_mode: 'auto'
           
 # Scripts
 script: 
