@@ -370,42 +370,12 @@ automation:
             - switch.coach_lights_switch # Coach lights
             - switch.living_room_ligh_switch # Livingroom lights
 
-# Commenting this out for use later when getting a z-wave outlet for small light in bedroom
-#automation 2: 
-#    alias: 'Turn on lights in the morning'
-#    # Turns on master bedroom lights and living room light in the morning if the sun 
-#    # is too low on the weekdays. (TODO: check if work is scheduled in google calendar)
-#    trigger: 
-#      platform: time
-#      after: '06:00:00'
-#    condition:
-#      condition: and
-#      conditions:
-#        - condition: numeric_state
-#          entity_id: sun.sun
-#          value_template: '{{ state.attributes.elevation }}'
-#          below: 0.5
-#        - condition: time
-#          weekday:
-#            - mon
-#            - tue
-#            - wed
-#            - thu
-#            - fri
-#    action: 
-#      - service: homeassistant.turn_on
-#        entity_id:
-#          - switch.living_room_lights_switch # Livingroom lights
-#          - switch.bedroom_lights_switch # Master bedroom lights
-          
-#automation 3: 
   - alias: 'Turn on lights in the morning after alarm'
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
     - trigger: 
         platform: mqtt
         topic: wakeup
-#        payload: 'wakeup'
     - action: 
         - service: homeassistant.turn_on
           entity_id:
@@ -422,7 +392,6 @@ automation:
           entity_id:
             - switch.living_room_ligh_switch # Livingroom lights
           
-#automation 4:
   - alias: 'Turn off Lights at Night'
     # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
     # Also turns off outside lights as they don't need to stay on all night.  
@@ -441,13 +410,11 @@ automation:
             - switch.entryway_light_switch
             - switch.tv_outlet_switch
 
-#automation 5:
   - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
     - trigger:
         platform: mqtt
         topic: sleep
-#        payload: 'sleep'
     - action:
         - service: homeassistant.turn_off
           entity_id:
@@ -462,7 +429,6 @@ automation:
             entity_id: climate.living_room
             operation_mode: 'eco'
 
-#automation 6: 
   - alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
@@ -480,7 +446,6 @@ automation:
           entity_id:
             - switch.living_room_ligh_switch # Livingroom lights
 
-#automation 7:
   - alias: 'Update Available Notifications'
     - trigger:
         platform: state
@@ -490,13 +455,11 @@ automation:
         data:
           message: 'Update for Home Assistant is available.'
       
-#automation 8:
   - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
     - trigger:
         platform: mqtt
         topic: bedtime
-#        payload: 'bedtime'
     - action:
         - condition: state
           entity_id: switch.living_room_ligh_switch
@@ -511,7 +474,6 @@ automation:
           - switch.entryway_light_switch
           - switch.hall_light_switch
 
-#automation 9:
   - alias: 'Away Mode'
     # Sets house to away mode
     - trigger:
@@ -525,7 +487,6 @@ automation:
             entity_id: climate.living_room
             operation_mode: 'eco'
 
-#automation 10:
   - alias: 'Home'
     # Sets house to at home mode
     - trigger:
