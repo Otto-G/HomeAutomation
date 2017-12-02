@@ -356,7 +356,7 @@ group:
 ###################################################
 
 # Automation
-automation 1: 
+automation: 
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
   - trigger:
@@ -398,7 +398,7 @@ automation 1:
 #          - switch.living_room_lights_switch # Livingroom lights
 #          - switch.bedroom_lights_switch # Master bedroom lights
           
-automation 3: 
+#automation 3: 
   - alias: 'Turn on lights in the morning after alarm'
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
@@ -422,7 +422,7 @@ automation 3:
         entity_id:
           - switch.living_room_ligh_switch # Livingroom lights
           
-automation 4:
+#automation 4:
   - alias: 'Turn off Lights at Night'
     # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
     # Also turns off outside lights as they don't need to stay on all night.  
@@ -441,7 +441,7 @@ automation 4:
           - switch.entryway_light_switch
           - switch.tv_outlet_switch
 
-automation 5:
+#automation 5:
   - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
   - trigger:
@@ -462,7 +462,7 @@ automation 5:
           entity_id: climate.living_room
           operation_mode: 'eco'
 
-automation 6: 
+#automation 6: 
   - alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
@@ -480,7 +480,7 @@ automation 6:
         entity_id:
           - switch.living_room_ligh_switch # Livingroom lights
 
-automation 7:
+#automation 7:
   - alias: 'Update Available Notifications'
   - trigger:
       platform: state
@@ -490,7 +490,7 @@ automation 7:
       data:
         message: 'Update for Home Assistant is available.'
       
-automation 8:
+#automation 8:
   - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
   - trigger:
@@ -511,7 +511,7 @@ automation 8:
         - switch.entryway_light_switch
         - switch.hall_light_switch
 
-automation 9:
+#automation 9:
   - alias: 'Away Mode'
     # Sets house to away mode
   - trigger:
@@ -525,7 +525,7 @@ automation 9:
           entity_id: climate.living_room
           operation_mode: 'eco'
 
-automation 10:
+#automation 10:
   - alias: 'Home'
     # Sets house to at home mode
   - trigger:
