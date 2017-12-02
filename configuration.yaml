@@ -468,7 +468,7 @@ automation 7:
     condition:
       condition: state
       entity_id: switch.living_room_ligh_switch
-      state: on
+      state: 'on'
     action:
       - service: homeassistant.turn_off
         entity_id:
