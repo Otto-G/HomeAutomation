@@ -460,16 +460,6 @@ automation 5:
         - switch.living_room_ligh_switch # Livingroom lights
 
 automation 6:
-  - alias: 'Update Available Notifications'
-    trigger:
-      platform: state
-      entity_id: updater.updater
-    action:
-      service: notify.notify
-      data:
-        message: 'Update for Home Assistant is available.'
-     
-automation 7:
   - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
     trigger:
@@ -490,7 +480,7 @@ automation 7:
         - switch.entryway_light_switch
         - switch.hall_light_switch
 
-automation 8:
+automation 7:
   - alias: 'Away Mode'
     # Sets house to away mode
     trigger:
@@ -504,7 +494,7 @@ automation 8:
         entity_id: climate.living_room
         operation_mode: 'eco'
 
-automation 9:
+automation 8:
   - alias: 'Home'
     # Sets house to at home mode
     trigger:
@@ -519,4 +509,4 @@ automation 9:
         operation_mode: 'auto'
           
 # Scripts
-script: 
+#script: 
