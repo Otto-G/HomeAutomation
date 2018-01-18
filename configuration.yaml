@@ -28,10 +28,10 @@ http:
     base_url: !secret base_url
     
 # Checks for available updates
-updater:
+#updater:
 
 # Enables support for tracking state changes over time.
-history:
+#history:
 
 # Track the sun
 sun:
@@ -40,7 +40,7 @@ sun:
 discovery:
 
 # Allows you to issue voice commands from the frontend
-conversation:
+#conversation:
 
 # View all events in a logbook
 logbook:
