@@ -300,6 +300,7 @@ group:
         - sensor.living_room_thermostat_humidity
         - group.media_players
         - group.all_automations
+        - sensor.gridcoin
 
 ### Details
 
