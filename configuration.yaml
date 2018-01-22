@@ -489,10 +489,13 @@ automation 7:
       zone: zone.home
       entity_id: device_tracker.pi_shamu
     action:
-      service: climate.set_operation_mode
-      data:
-        entity_id: climate.living_room
-        operation_mode: 'eco'
+      - service: climate.set_operation_mode
+        data:
+          entity_id: climate.living_room
+          operation_mode: 'eco'
+      - service: homeassistant.turn_off
+        entity_id:
+        - switch.bedroom_lights_switch
 
 automation 8:
   - alias: 'Home'
