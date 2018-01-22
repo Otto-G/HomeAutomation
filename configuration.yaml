@@ -286,21 +286,21 @@ group:
       view: yes
       entities: 
         - device_tracker.pi_shamu
+        - sensor.gridcoin
+        - sensor.fedex
+        - sensor.ups
         - group.Freenas
         - group.weather
-        - group.HomeLights
-        - group.HomeLightsTesting
-        - group.all_switches
-        - group.Shipping
+#        - group.Shipping
 
     Control:
       view: yes
       entities:
-        - climate.living_room
         - sensor.living_room_thermostat_humidity
+        - climate.living_room
+        - group.HomeLights
         - group.media_players
         - group.all_automations
-        - sensor.gridcoin
 
 ### Details
 
@@ -352,12 +352,12 @@ group:
         - switch.hall_light_switch # Hall light near bedroom
         - switch.tv_outlet_switch # Switch to turn TV on-off
 
-    Shipping:
-      name: Shipping
-      entities:
-        - sensor.fedex
-        - sensor.ups
-        - sensor.usps_packages
+#    Shipping:
+#      name: Shipping
+#      entities:
+#        - sensor.fedex
+#        - sensor.ups
+#        - sensor.usps_packages
 #        - sensor.usps_mail
 #        - camera.usps_mail
 
