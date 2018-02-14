@@ -156,6 +156,8 @@ sensor 2:
         - type: 'memory_use_percent'
         - type: 'memory_use'
         - type: 'memory_free'
+        - type: 'swap_free'
+        - type: 'swap_use_percent'
         - type: 'processor_use'
         - type: 'since_last_boot'
     
@@ -309,8 +311,10 @@ group:
       entities: 
         - sensor.processor_use
         - sensor.cpu_0_temperature
-        - sensor.memory_used_2
-        - sensor.memory_used
+        - sensor.memory_use_2
+        - sensor.memory_use
+        - sensor.swap_use
+        - sensor.swap_free
         - sensor.disk_free_
 #        - sensor.disk_use_
         - sensor.hd_1_temperature
