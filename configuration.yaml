@@ -311,9 +311,9 @@ group:
       entities: 
         - sensor.processor_use
         - sensor.cpu_0_temperature
-        - sensor.memory_use_2
+        - sensor.memory_use_percent
         - sensor.memory_use
-        - sensor.swap_use
+        - sensor.swap_use_percent
         - sensor.swap_free
         - sensor.disk_free_
 #        - sensor.disk_use_
