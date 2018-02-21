@@ -284,7 +284,7 @@ sensor 6:
 
 # Groups
 group: 
-    Home: 
+    default_view: 
       view: yes
       entities: 
         - device_tracker.pi_shamu
