@@ -24,3 +24,5 @@ switch.hall_light_switch:
   friendly_name: Hall light
 zone.home:
   radius: 150
+group.default_view:
+  friendly_name: Home
