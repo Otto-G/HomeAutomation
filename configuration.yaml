@@ -83,8 +83,6 @@ zwave:
     usb_path: /dev/cuaU0
     polling_interval: 10000 # Polling speed in miliseconds
     # High polling number was needed to keep z-wave network stable and working
-    
-    new_entity_ids: true
 
 ###################################################
 #                    Devices                      #
