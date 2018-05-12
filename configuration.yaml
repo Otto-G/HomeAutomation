@@ -135,7 +135,7 @@ sensor:
 #      - daily_summary
 
     platform: pollen
-    zip_code: !secret zipCode
+    zip_code: "!secret zipCode"
     monitored_conditions:
       - allergy_average_forecasted
       - allergy_average_historical
