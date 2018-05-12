@@ -303,6 +303,7 @@ group:
         - group.Freenas
         - group.weather
 #        - group.Shipping
+        - group.allergies
 
     Control:
       view: yes
@@ -347,6 +348,13 @@ group:
         - sensor.dark_sky_dew_point
         - sensor.dark_sky_visibility
         - camera.HomeWeatherRadar
+
+    allergies:
+      name: Allergies
+      entities:
+        - sensor.allergy_index_today_2
+        - sensor.allergy_index_tomorrow_2
+        - sensor.allergy_index_yesterday_2
 
     media_players:
       name: Media_Players
