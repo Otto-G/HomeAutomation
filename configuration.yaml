@@ -134,6 +134,7 @@ sensor:
       - hourly_summary
 #      - daily_summary
 
+sensor 7:
     platform: pollen
     zip_code: "!secret zipCode"
     monitored_conditions:
