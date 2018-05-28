@@ -349,7 +349,7 @@ group:
         - sensor.dark_sky_humidity
         - sensor.dark_sky_dew_point
 #        - sensor.dark_sky_visibility
-        - sensoe.dark_sky_uv_index
+        - sensor.dark_sky_uv_index
         - sensor.allergy_index_today_2
         - sensor.allergy_index_tomorrow_2
         - sensor.allergy_index_yesterday_2
