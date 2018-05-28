@@ -274,10 +274,6 @@ sensor 5:
     username: !secret ups_user
     password: !secret ups_pass
     
-usps:
-    username: !secret usps_user
-    password: !secret usps_pass
-
 ###################################################
 #                      Mining                     #
 ###################################################
@@ -301,12 +297,9 @@ group:
         - sensor.gridcoin
         - sensor.fedex
         - sensor.ups
-        - sensor.usps_packages
-        - sensor.usps_mail
         - group.Freenas
         - group.weather
         - group.cameras
-#        - group.Shipping
 
     Control:
       view: yes
@@ -378,14 +371,6 @@ group:
         - switch.hall_light_switch # Hall light near bedroom
         - switch.tv_outlet_switch # Switch to turn TV on-off
 
-#    Shipping:
-#      name: Shipping
-#      entities:
-#        - sensor.fedex
-#        - sensor.ups
-#        - sensor.usps_packages
-#        - sensor.usps_mail
-#        - camera.usps_mail
 
 ###################################################
 #                   Automation                    #
