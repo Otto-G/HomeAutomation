@@ -21,10 +21,8 @@ Saturday - Sunday
 Open/Close blinds
  - [ ] Open blinds in the morning after the sun is up
  - [ ] Close the blinds at night
-   - [ ] Turn on a hallway light
-     - [ ] Currently living room light turns on.  Need switch for hallway light
-     - [ ] When home, turn off hallway light. Turn on Kitchen & Dining room lights
-
+ - [x] Turn on a hallway light
+  
 Turn on coach lights at night
  - [x] Once sun sets, turn on coach lights until 2AM
 
@@ -60,7 +58,7 @@ Washer dryer
    - [ ] Front Guest group (2 windows)
    - [ ] Rear Guest group (1 window)
  - [ ] Light switches
-   - [ ] Coach Light group (1 main switches)
+   - [x] Coach Light group (1 main switches)
      - [x] Coach and porch lights (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
    - [ ] Living space group (3 main switches + 1 aux switch)
      - [ ] Kitchen light group (1 main switch + 1 aux switch)
@@ -70,7 +68,7 @@ Washer dryer
      - [x] Bedroom light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
      - [ ] Switch for fan (1 main switch)
      - [ ] Master bath light group (1 main switch)
-   - [ ] Auxilary group (2 main switches (+ 1 aux switch?))
+   - [x] Auxilary group (2 main switches (+ 1 aux switch?))
      - [x] Hallway light (1 main switch + 1 aux switch [aux switch not needed])
      - [x] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Energy meter for washer & dryer
