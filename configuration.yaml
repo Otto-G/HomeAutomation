@@ -280,7 +280,7 @@ sensor 5:
 
 sensor 6:
   - platform: coinmarketcap
-    currency: gridcoin
+    currency_id: 833
     
 ###################################################
 #                    Groups                       #
