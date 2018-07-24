@@ -526,6 +526,24 @@ automation 8:
       data:
         entity_id: climate.living_room
         operation_mode: 'auto'
+
+automation 9:
+  - alias: 'Door Notification'
+    # Sends notification when door opened if not home
+    trigger:
+      platform: state
+      entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor
+      from: 'off'
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: group.all_devices
+      state: 'away'
+    action:
+      - service: notify.pushbullet
+        data:
+          message: "Garage door opened"
+          title: "Door Opened"
           
 # Scripts
 #script: 
