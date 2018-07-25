@@ -538,7 +538,7 @@ automation 9:
     condition:
       condition: state
       entity_id: group.all_devices
-      state: 'away'
+      state: 'not_home'
     action:
       - service: notify.pushbullet
         data:
