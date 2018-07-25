@@ -85,7 +85,7 @@ Washer dryer
    - Alarm end
  - [Tasker](https://tasker.dinglisch.net/)
    - Sending triggers to main hub
-   - Uses mqtt to send messages
+   - Uses HTTP Post to send messages (directly triggering automations)
  - [Home-assistant](https://home-assistant.io/)
    - Main hub
  - [Owntracks](http://owntracks.org/)
