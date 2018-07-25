@@ -72,9 +72,10 @@ Washer dryer
      - [x] Hallway light (1 main switch + 1 aux switch [aux switch not needed])
      - [x] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Door sensor
-   - [x] [Garage Door](https://smile.amazon.com/gp/product/B01N5HB4U5/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1)
+   - [x] [Garage Door (Entryway)](https://smile.amazon.com/gp/product/B01N5HB4U5/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1)
    - [ ] Front Door
    - [ ] Back Door
+   - [ ] Outside Garage Door
  - [ ] Energy meter for washer & dryer
  - [x] Thermostat (Nest E)
 
