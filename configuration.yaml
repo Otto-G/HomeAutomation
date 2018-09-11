@@ -186,24 +186,6 @@ sensor 2:
 #              Presence Detection                 #
 ###################################################
 
-# Tracking through TP-Link Router 
-# Stopped using after replacing with Owntracks.  Only 1 login is possible  
-# at a time and Home Assistant locks the router from being accessed
-#device_tracker:
-#  platform: tplink
-#  host: 192.168.1.1
-#  username: !!secret tp_link_user
-#  password: !secret tp_link_pass
-
-# Tracking through nmap (higher cpu usage)
-#device_tracker:
-#    platform: nmap_tracker
-#    hosts: 192.168.1.1/24
-#    # Number of minutes nmap will not scan this 
-#    # device, assuming it's home, in order to save
-#    # battery life
-#    home_interval: 5
-
 #Tracking through owntracks
 device_tracker:
   platform: owntracks
