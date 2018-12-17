@@ -187,8 +187,7 @@ sensor 2:
 ###################################################
 
 #Tracking through owntracks
-device_tracker:
-  platform: owntracks_http
+owntracks:
 
   # If newly discovered devices are tracked by default (default: yes)
   track_new_devices: yes
