@@ -270,7 +270,7 @@ group:
     default_view: 
       view: yes
       entities: 
-        - device_tracker.pi_shamu
+        - device_tracker.michael_pixel3
         - sensor.gridcoin
         - sensor.fedex
         - sensor.ups
@@ -480,7 +480,7 @@ automation 7:
       platform: zone
       event: leave
       zone: zone.home
-      entity_id: device_tracker.pi_shamu
+      entity_id: device_tracker.michael_pixel3
     action:
       - service: climate.set_operation_mode
         data:
@@ -497,7 +497,7 @@ automation 8:
       platform: zone
       event: enter
       zone: zone.home
-      entity_id: device_tracker.pi_shamu
+      entity_id: device_tracker.michael_pixel3
     action:
       service: climate.set_operation_mode
       data:
