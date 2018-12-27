@@ -24,7 +24,7 @@ homeassistant: # Name of the location where Home Assistant is running
 
 # Configuration for the website
 http:
-    api_password: !secret api_pass_code
+#    api_password: !secret api_pass_code
     base_url: !secret base_url
     
 # Checks for available updates
