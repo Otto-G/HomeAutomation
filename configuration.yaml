@@ -378,8 +378,8 @@ automation 2:
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
     trigger:
-      platform: mqtt
-      topic: wakeup
+      platform: webhook
+      webhook_id: !secret morning_light_webhook
     action:
       - service: homeassistant.turn_on
         entity_id:
@@ -419,8 +419,8 @@ automation 4:
   - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
     trigger:
-      platform: mqtt
-      topic: sleep
+      platform: webhook
+      webhook_id: !secret sleep_time_webhook
     action:
       - service: homeassistant.turn_off
         entity_id:
