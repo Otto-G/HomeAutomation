@@ -384,6 +384,7 @@ automation 2:
       - service: homeassistant.turn_on
         entity_id:
           - switch.bedroom_lights_switch # Master bedroom lights
+          - switch.tv_outlet_switch
       - service: climate.set_operation_mode
         data:
           entity_id: climate.living_room
@@ -489,6 +490,7 @@ automation 7:
       - service: homeassistant.turn_off
         entity_id:
         - switch.bedroom_lights_switch
+        - switch.tv_outlet_switch
 
 automation 8:
   - alias: 'Home'
@@ -499,10 +501,13 @@ automation 8:
       zone: zone.home
       entity_id: device_tracker.michael_pixel3
     action:
-      service: climate.set_operation_mode
-      data:
-        entity_id: climate.living_room
-        operation_mode: 'auto'
+      - service: climate.set_operation_mode
+        data:
+          entity_id: climate.living_room
+          operation_mode: 'auto'
+      - service: homeassistant.turn_on
+        entity_id:
+        - switch.tv_outlet_switch
 
 automation 9:
   - alias: 'Door Notification'
