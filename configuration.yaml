@@ -415,6 +415,7 @@ automation 3:
         - switch.hall_light_switch
         - switch.entryway_light_switch
         - switch.tv_outlet_switch
+        - switch.bedroom_lights_switch # Master bedroom lights
 
 automation 4:
   - alias: 'Sleep time'
