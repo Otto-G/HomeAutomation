@@ -458,8 +458,8 @@ automation 6:
   - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
     trigger:
-      platform: mqtt
-      topic: bedtime
+      platform: webhook
+      webhook_id: !secret bedtime_webhook
     condition:
       condition: state
       entity_id: switch.living_room_ligh_switch
