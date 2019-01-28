@@ -241,15 +241,15 @@ sensor 3:
 #                     Shipping                    #
 ###################################################
 
-sensor 4:
-  - platform: fedex
-    username: !secret fedex_user
-    password: !secret fedex_pass
+#sensor 4:
+#  - platform: fedex
+#    username: !secret fedex_user
+#    password: !secret fedex_pass
     
-sensor 5:
-  - platform: ups
-    username: !secret ups_user
-    password: !secret ups_pass
+#sensor 5:
+#  - platform: ups
+#    username: !secret ups_user
+#    password: !secret ups_pass
     
 ###################################################
 #                      Mining                     #
