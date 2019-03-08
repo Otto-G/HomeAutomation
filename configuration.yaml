@@ -44,6 +44,12 @@ discovery:
 
 # View all events in a logbook
 logbook:
+    include:
+        entities:
+          - climate.living_room
+          - device_tracker.michael_pixel3
+        domains:
+          - automation
 
 # Enable config screen
 config:
