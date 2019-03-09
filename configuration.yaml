@@ -227,21 +227,14 @@ mqtt:
 #                  Transmission                   #
 ###################################################
 
-switch:
-  platform: transmission
+transmission:
   host: 192.168.1.2
 #  username: !secret transmission_user
 #  password: !secret transmission_pass
-
-sensor 3:
-  - platform: transmission
-    host: 192.168.1.2
-#    username: !secret transmission_user
-#    password: !secret transmission_pass
-    monitored_variables:
-      - 'current_status'
-      - 'download_speed'
-      - 'upload_speed'
+  monitored_variables:
+    - 'current_status'
+    - 'download_speed'
+    - 'upload_speed'
 
 ###################################################
 #                     Shipping                    #
