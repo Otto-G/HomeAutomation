@@ -409,9 +409,7 @@ automation 3:
     # Also turns off outside lights as they don't need to stay on all night.  
     trigger:
       platform: time
-      hours: 2
-      minutes: 0
-      seconds: 0
+      at: '2:00:00'
     action:
       service: homeassistant.turn_off
       entity_id:
