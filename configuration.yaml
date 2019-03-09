@@ -94,8 +94,8 @@ zwave:
 #                    Devices                      #
 ###################################################
 
-media_player 2:
-    platform: plex
+#media_player 2:
+#    platform: plex
 
 #media_player 3:
 #    platform: roku
@@ -283,7 +283,7 @@ group:
         - sensor.living_room_thermostat_humidity
         - climate.living_room
         - group.HomeLights
-        - group.media_players
+#        - group.media_players
         - group.all_automations
 
 ### Details
@@ -331,12 +331,12 @@ group:
       entities:
         - camera.HomeWeatherRadar
 
-    media_players:
-      name: Media_Players
-      entities: 
-        - media_player.loki
-        - media_player.plex_web_chrome
-        - media_player.roku_12c28s042036
+#    media_players:
+#      name: Media_Players
+#      entities: 
+#        - media_player.loki
+#        - media_player.plex_web_chrome
+#        - media_player.roku_12c28s042036
 
     HomeLights:
       name: HomeLights
