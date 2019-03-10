@@ -231,6 +231,7 @@ transmission:
   host: 192.168.1.2
 #  username: !secret transmission_user
 #  password: !secret transmission_pass
+  turtle_mode: true
   monitored_conditions:
     - 'current_status'
     - 'download_speed'
@@ -305,7 +306,7 @@ group:
         - sensor.transmission_status
         - sensor.transmission_down_speed
         - sensor.transmission_up_speed
-        - switch.transmission_turtle_mode
+        - switch.transmission
 
     weather:
       name: Weather
