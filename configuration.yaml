@@ -30,6 +30,9 @@ http:
 # Checks for available updates
 #updater:
 
+#System health component
+system_health:
+
 # Enables support for tracking state changes over time.
 #history:
 
