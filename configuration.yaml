@@ -27,23 +27,14 @@ http:
 #    api_password: !secret api_pass_code
     base_url: !secret base_url
     
-# Checks for available updates
-#updater:
-
 #System health component
 system_health:
-
-# Enables support for tracking state changes over time.
-#history:
 
 # Track the sun
 sun:
 
 # Discover some devices automatically
 discovery:
-
-# Allows you to issue voice commands from the frontend
-#conversation:
 
 # View all events in a logbook
 logbook:
@@ -63,9 +54,6 @@ frontend:
 
 # Enable map screen
 map:
-
-# Show links to resources in log and frontend
-#introduction:
 
 ###################################################
 #                     Zones                       #
@@ -97,12 +85,7 @@ zwave:
 #                    Devices                      #
 ###################################################
 
-#media_player 2:
-#    platform: plex
 
-#media_player 3:
-#    platform: roku
-#    host: 192.168.1.6
 
 
 ###################################################
@@ -240,19 +223,6 @@ transmission:
     - 'download_speed'
     - 'upload_speed'
 
-###################################################
-#                     Shipping                    #
-###################################################
-
-#sensor 4:
-#  - platform: fedex
-#    username: !secret fedex_user
-#    password: !secret fedex_pass
-    
-#sensor 5:
-#  - platform: ups
-#    username: !secret ups_user
-#    password: !secret ups_pass
     
 ###################################################
 #                      Mining                     #
@@ -335,12 +305,6 @@ group:
       entities:
         - camera.HomeWeatherRadar
 
-#    media_players:
-#      name: Media_Players
-#      entities: 
-#        - media_player.loki
-#        - media_player.plex_web_chrome
-#        - media_player.roku_12c28s042036
 
     HomeLights:
       name: HomeLights
@@ -529,6 +493,3 @@ automation 9:
         data:
           message: "Garage door opened"
           title: "Door Opened"
-          
-# Scripts
-#script: 
