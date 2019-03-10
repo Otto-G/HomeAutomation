@@ -361,6 +361,7 @@ group:
 automation:
   - alias: 'Turn on Lights at Dusk'
     # Turns on Living room and outdoor lights when the sun goes down
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sun.sun
@@ -381,6 +382,7 @@ automation 2:
   - alias: 'Turn on lights in the morning after alarm'
     # Turns on master bedroom lights in the morning to help wake up
     # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
+    initial_state: 'on'
     trigger:
       platform: webhook
       webhook_id: !secret morning_light_webhook
@@ -405,6 +407,7 @@ automation 3:
   - alias: 'Turn off Lights at Night'
     # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
     # Also turns off outside lights as they don't need to stay on all night.  
+    initial_state: 'on'
     trigger:
       platform: time
       at: '2:00:00'
@@ -422,6 +425,7 @@ automation 3:
 automation 4:
   - alias: 'Sleep time'
     # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
+    initial_state: 'on'
     trigger:
       platform: webhook
       webhook_id: !secret sleep_time_webhook
@@ -443,6 +447,7 @@ automation 5:
   - alias: 'Turn off lights in the morning if needed'
     # Trns off lights in the morning if the sun rises after 6:30.  
     # This excludes the master bedroom as I may still need the lights on. 
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id: sun.sun
@@ -459,6 +464,7 @@ automation 5:
 automation 6:
   - alias: 'Bedtime'
     # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
+    initial_state: 'on'
     trigger:
       platform: webhook
       webhook_id: !secret bedtime_webhook
@@ -480,6 +486,7 @@ automation 6:
 automation 7:
   - alias: 'Away Mode'
     # Sets house to away mode
+    initial_state: 'on'
     trigger:
       platform: zone
       event: leave
@@ -498,6 +505,7 @@ automation 7:
 automation 8:
   - alias: 'Home'
     # Sets house to at home mode
+    initial_state: 'on'
     trigger:
       platform: zone
       event: enter
@@ -515,6 +523,7 @@ automation 8:
 automation 9:
   - alias: 'Door Notification'
     # Sends notification when door opened if not home
+    initial_state: 'on'
     trigger:
       platform: state
       entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor
