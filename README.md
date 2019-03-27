@@ -30,10 +30,6 @@ Front door (using smart lock & door bell)
  - [ ] Take picture of person ringing door bell and send email
  - [ ] If door is opened, take video of them entering/exiting and send email
    - [ ] Concerned about security with z-wave locks.  May implement with simple switch
- 
-Porch (Storage box for delivery)
- - [ ] When lid is opened, take video of porch
-   - [ ] Need to add box and everything else
 
 Turn off lights at night
  - [x] Turn off all interior lights when going to sleep
