@@ -9,7 +9,7 @@ Monday - Friday
  - [ ] Turn on Main kitchen light after waking up
    - [ ] Need to add kitchen master and slave switches
  - [x] Start podcast in morning after waking up
-   - Uses [Tasker](https://tasker.dinglisch.net/) and [Beyondpod](https://www.beyondpod.mobi/android/index.htm)
+   - Uses [Tasker](https://tasker.dinglisch.net/) and [AntennaPod](https://antennapod.org/)
    
 Saturday - Sunday
  - [x] Turn on lights after waking up if needed
@@ -92,6 +92,6 @@ Washer dryer
    - Used for location tracking
  - [Pebble watch](https://www.pebble.com/)
    - Used for starting sleep as android and motion during sleeping
- - [Beyondpod](https://www.beyondpod.mobi/android/index.htm)
+ - [AntennaPod](https://antennapod.org/)
    - Used to download podcasts and play them offline
    - Updates automatically early in the morning
