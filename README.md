@@ -86,12 +86,13 @@ Washer dryer
  - [Tasker](https://tasker.dinglisch.net/)
    - Sending triggers to main hub
    - Uses HTTP Post to send messages (directly triggering automations)
+ - [Autovoice](https://joaoapps.com/autovoice/)
+   - Tasker plugin to communicate with google home/assistant
+   - Used to trigger Sleep as Android
  - [Home-assistant](https://home-assistant.io/)
    - Main hub
  - [Owntracks](http://owntracks.org/)
    - Used for location tracking
- - [Pebble watch](https://www.pebble.com/)
-   - Used for starting sleep as android and motion during sleeping
  - [AntennaPod](https://antennapod.org/)
    - Used to download podcasts and play them offline
    - Updates automatically early in the morning
