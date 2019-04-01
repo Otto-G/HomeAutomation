@@ -67,7 +67,7 @@ zone:
   name: Work
   latitude: !secret work_lat
   longitude: !secret work_lon
-  radius: 150
+  radius: 300
   icon: mdi:domain
 
 zone 2:
