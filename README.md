@@ -53,7 +53,7 @@ Washer dryer
    - [HGST Ultrastar 7k4000 3TB x 2](https://www.amazon.com/gp/product/B01LYVD7ME/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1)
    - [Aeotec z-wave adapter](https://www.amazon.com/gp/product/B00X0AWA6E/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
    - [Intel PRO/1000 Pt Network adapter](https://www.amazon.com/gp/product/B000BMZHX2/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
-     - !! Note, x4 PCI slot where motherboard only has x1.  I modified motherboard to fit card, don't really recommend.
+     - !! Note, x4 PCI slot where motherboard only has x1.  I modified motherboard to fit card, don't really recommend.  Still better than Realtek.  
    - 16GB USB drive x2
  - [ ] Z-Wave Blinds (12 windows)
    - [ ] Back living group (4 windows: Dining room, Living room)
