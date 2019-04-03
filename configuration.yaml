@@ -44,6 +44,12 @@ logbook:
           - device_tracker.michael_pixel3
         domains:
           - automation
+          
+# View History of specific items
+history:
+    include:
+        entities:
+          - sensor.dark_sky_pressure
 
 # Configuring recorder to keep size down
 recorder:
