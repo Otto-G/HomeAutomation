@@ -118,21 +118,21 @@ sensor:
     scan_interval:
       minutes: 5
     monitored_conditions:
-      - summary
-      - temperature
+#      - summary
+#      - temperature
       - precip_type
       - precip_intensity
       - precip_probability
-      - wind_speed
-      - wind_bearing
+#      - wind_speed
+#      - wind_bearing
 #      - cloud_cover
-      - humidity
+#      - humidity
       - dew_point
       - pressure
       - visibility
 #      - ozone
 #      - minutely_summary
-      - hourly_summary
+#      - hourly_summary
 #      - daily_summary
       - uv_index
 
