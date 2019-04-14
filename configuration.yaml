@@ -139,6 +139,7 @@ sensor:
 weather:
   - platform: darksky
     api_key: !secret darksky_key
+    mode: daily
 
 sensor 7:
     platform: pollen
