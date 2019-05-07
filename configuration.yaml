@@ -233,7 +233,7 @@ mqtt:
 ###################################################
 
 transmission:
-  host: 192.168.0.2
+  host: 192.168.1.2
 #  username: !secret transmission_user
 #  password: !secret transmission_pass
   turtle_mode: true
