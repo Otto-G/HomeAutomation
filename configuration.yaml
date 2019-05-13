@@ -456,15 +456,16 @@ automation 6:
       entity_id: switch.living_room_ligh_switch
       state: 'on'
     action:
+      - service: homeassistant.turn_on
+        entity_id:
+        - switch.entryway_light_switch
+        - switch.hall_light_switch
       - service: homeassistant.turn_off
         entity_id:
         - switch.living_room_ligh_switch # Livingroom lights
         - switch.tv_outlet_switch
         - media_player.loki
-      - service: homeassistant.turn_on
-        entity_id:
-        - switch.entryway_light_switch
-        - switch.hall_light_switch
+
 
 automation 7:
   - alias: 'Away Mode'
