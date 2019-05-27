@@ -142,8 +142,7 @@ weather:
     api_key: !secret darksky_key
     mode: daily
 
-sensor 7:
-    platform: pollen
+iqvia:
     zip_code: !secret zipCode
     monitored_conditions:
       - allergy_average_forecasted
