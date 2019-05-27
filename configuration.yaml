@@ -145,9 +145,9 @@ iqvia:
     zip_code: !secret zipCode
     monitored_conditions:
       - allergy_average_forecasted
-      - allergy_average_historical
+#      - allergy_average_historical
       - allergy_index_today
-      - allergy_index_yesterday
+#      - allergy_index_yesterday
       - allergy_index_tomorrow
       - disease_average_forecasted
 
