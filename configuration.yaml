@@ -513,7 +513,7 @@ automation 9:
       to: 'on'
     condition:
       condition: state
-      entity_id: group.all_devices
+      entity_id: device_tracker.michael_pixel3
       state: 'not_home'
     action:
       - service: notify.pushbullet
