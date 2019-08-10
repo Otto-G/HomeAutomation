@@ -25,7 +25,6 @@ homeassistant:
 
 # Configuration for the website
 http:
-#    api_password: !secret api_pass_code
     base_url: !secret base_url
     
 #System health component
@@ -41,7 +40,6 @@ discovery:
 logbook:
     include:
         entities:
-          - climate.living_room
           - device_tracker.michael_pixel3
         domains:
           - automation
@@ -97,15 +95,6 @@ zwave:
 ###################################################
 
 
-
-
-###################################################
-#                      nest                       #
-###################################################
-
-nest: 
-    client_id: !secret nest_client_id
-    client_secret: !secret nest_client_secret
 
 ###################################################
 #                    Weather                      #
@@ -271,8 +260,6 @@ group:
     Control:
       view: yes
       entities:
-        - sensor.living_room_thermostat_humidity
-        - climate.living_room
         - group.HomeLights
 #        - group.media_players
         - group.all_automations
@@ -372,10 +359,14 @@ automation 2:
         entity_id:
           - switch.bedroom_lights_switch # Master bedroom lights
           - switch.tv_outlet_switch
-      - service: climate.set_operation_mode
+      - service: climate.set_temperature
         data:
-          entity_id: climate.living_room
-          operation_mode: 'auto'
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
+          target_temp_high: 80
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
+          target_temp_low: 68
       - condition: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
@@ -419,10 +410,14 @@ automation 4:
         - switch.hall_light_switch
         - switch.entryway_light_switch
         - switch.tv_outlet_switch
-      - service: climate.set_operation_mode
+      - service: climate.set_temperature
         data:
-          entity_id: climate.living_room
-          operation_mode: 'eco'
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
+          target_temp_high: 80
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
+          target_temp_low: 64
 
 automation 5:
   - alias: 'Turn off lights in the morning if needed'
@@ -444,7 +439,7 @@ automation 5:
 
 automation 6:
   - alias: 'Bedtime'
-    # Turns off main lights and TV when it is bedtime.  Uses mqtt and tasker to send the message
+    # Turns off main lights and TV when it is bedtime.  Uses webhooks and tasker to send the message
     initial_state: 'on'
     trigger:
       platform: webhook
@@ -475,10 +470,14 @@ automation 7:
       zone: zone.home
       entity_id: device_tracker.michael_pixel3
     action:
-      - service: climate.set_operation_mode
+      - service: climate.set_temperature
         data:
-          entity_id: climate.living_room
-          operation_mode: 'eco'
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
+          target_temp_high: 80
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
+          target_temp_low: 64
       - service: homeassistant.turn_off
         entity_id:
         - switch.bedroom_lights_switch
@@ -494,10 +493,14 @@ automation 8:
       zone: zone.home
       entity_id: device_tracker.michael_pixel3
     action:
-      - service: climate.set_operation_mode
+      - service: climate.set_temperature
         data:
-          entity_id: climate.living_room
-          operation_mode: 'auto'
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
+          target_temp_high: 80
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
+          target_temp_low: 68
       - service: homeassistant.turn_on
         entity_id:
         - switch.tv_outlet_switch
