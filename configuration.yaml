@@ -317,6 +317,8 @@ group:
         - switch.entryway_light_switch # Entryway lights
         - switch.hall_light_switch # Hall light near bedroom
         - switch.tv_outlet_switch # Switch to turn TV on-off
+        - switch.kitchen_light # Lights for the kitchen
+        - switch.dining_room_switch # Light for the dining room
 
 
 ###################################################
@@ -386,6 +388,8 @@ automation 3:
       entity_id:
         - switch.coach_lights_switch # Coach lights
         - switch.living_room_ligh_switch # Livingroom lights
+        - switch.kitchen_light
+        - switch.dining_room_switch
         - media_player.loki
         - switch.hall_light_switch
         - switch.entryway_light_switch
@@ -404,6 +408,8 @@ automation 4:
         entity_id:
         - switch.living_room_ligh_switch # Livingroom lights
         - switch.bedroom_lights_switch # Master bedroom lights
+        - switch.kitchen_light
+        - switch.dining_room_switch
         - media_player.loki
         - switch.hall_light_switch
         - switch.entryway_light_switch
@@ -454,6 +460,7 @@ automation 6:
       - service: homeassistant.turn_off
         entity_id:
         - switch.living_room_ligh_switch # Livingroom lights
+        - switch.dining_room_switch
         - switch.tv_outlet_switch
         - media_player.loki
 
@@ -480,6 +487,8 @@ automation 7:
         entity_id:
         - switch.bedroom_lights_switch
         - switch.tv_outlet_switch
+        - switch.kitchen_light
+        - switch.dining_room_switch
 
 automation 8:
   - alias: 'Home'
