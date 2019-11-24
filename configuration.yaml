@@ -223,11 +223,6 @@ transmission:
   host: 192.168.1.2
 #  username: !secret transmission_user
 #  password: !secret transmission_pass
-  turtle_mode: true
-  monitored_conditions:
-    - 'current_status'
-    - 'download_speed'
-    - 'upload_speed'
 
     
 ###################################################
