@@ -273,10 +273,6 @@ group:
         - sensor.hd_1_temperature
         - sensor.hd_2_temperature
         - sensor.last_boot
-        - sensor.transmission_status
-        - sensor.transmission_down_speed
-        - sensor.transmission_up_speed
-        - switch.transmission
 
     weather:
       name: Weather
