@@ -146,6 +146,18 @@ camera:
     name: HomeWeatherRadar
 
 ###################################################
+#                      Mining                     #
+###################################################
+
+camera 2:
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/oplp1_hg.png
+      name: LowerYoughRiverLevel
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/mrdo1_hg.png
+      name: MadRiverDayton
+
+###################################################
 #                  System info                    #
 ###################################################
 
