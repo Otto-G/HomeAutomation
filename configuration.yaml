@@ -64,6 +64,9 @@ frontend:
 # Enable map screen
 map:
 
+# Add in mobile app compatibility
+mobile_app:
+
 ###################################################
 #                     Zones                       #
 ###################################################
