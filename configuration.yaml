@@ -4,7 +4,7 @@ homeassistant:
   # Location required to calculate the time the sun rises and sets
   latitude: !secret home_lat
   longitude: !secret home_lon
-  # Impacts weather/sunrise data (meters above sealevel)
+  # Impacts weather/sunrise data (meters above sea level)
   elevation: !secret home_elev
   # 'metric' for the metric system, 'imperial' for the imperial system
   unit_system: imperial
@@ -64,6 +64,9 @@ frontend:
 # Enable map screen
 map:
 
+# Add in mobile app compatibility
+mobile_app:
+
 ###################################################
 #                     Zones                       #
 ###################################################
@@ -87,7 +90,7 @@ zone 2:
 
 zwave:
     usb_path: /dev/cuaU0
-    polling_interval: 10000 # Polling speed in miliseconds
+    polling_interval: 10000 # Polling speed in milliseconds
     # High polling number was needed to keep z-wave network stable and working
 
 ###################################################
@@ -144,6 +147,18 @@ camera:
     platform: generic
     still_image_url: !secret radar_url
     name: HomeWeatherRadar
+
+###################################################
+#                    Whitewater                   #
+###################################################
+
+camera 2:
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/oplp1_hg.png
+      name: LowerYoughRiverLevel
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/mrdo1_hg.png
+      name: MadRiverDayton
 
 ###################################################
 #                  System info                    #
@@ -303,7 +318,7 @@ group:
       name: HomeLights
       entities:
         - switch.coach_lights_switch # Coach lights
-        - switch.living_room_ligh_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Living room lights
         - switch.bedroom_lights_switch # Master bedroom lights
         - switch.entryway_light_switch # Entryway lights
         - switch.hall_light_switch # Hall light near bedroom
@@ -335,7 +350,7 @@ automation:
         state: 'off'
       - service: homeassistant.turn_on
         entity_id:
-          - switch.living_room_ligh_switch # Livingroom lights
+          - switch.living_room_ligh_switch # Living room lights
 
 automation 2:
   - alias: 'Turn on lights in the morning after alarm'
@@ -364,11 +379,11 @@ automation 2:
         below: 0.5
       - service: homeassistant.turn_on
         entity_id:
-          - switch.living_room_ligh_switch # Livingroom lights
+          - switch.living_room_ligh_switch # Living room lights
           
 automation 3:
   - alias: 'Turn off Lights at Night'
-    # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep trackcing.
+    # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep tracking.
     # Also turns off outside lights as they don't need to stay on all night.  
     initial_state: 'on'
     trigger:
@@ -378,7 +393,7 @@ automation 3:
       service: homeassistant.turn_off
       entity_id:
         - switch.coach_lights_switch # Coach lights
-        - switch.living_room_ligh_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Living room lights
         - switch.kitchen_light
         - switch.dining_room_switch
         - media_player.loki
@@ -397,7 +412,7 @@ automation 4:
     action:
       - service: homeassistant.turn_off
         entity_id:
-        - switch.living_room_ligh_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Living room lights
         - switch.bedroom_lights_switch # Master bedroom lights
         - switch.kitchen_light
         - switch.dining_room_switch
@@ -416,7 +431,7 @@ automation 4:
 
 automation 5:
   - alias: 'Turn off lights in the morning if needed'
-    # Trns off lights in the morning if the sun rises after 6:30.  
+    # Turns off lights in the morning if the sun rises after 6:30.
     # This excludes the master bedroom as I may still need the lights on. 
     initial_state: 'on'
     trigger:
@@ -430,7 +445,7 @@ automation 5:
     action:
       service: homeassistant.turn_off
       entity_id:
-        - switch.living_room_ligh_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Living room lights
 
 automation 6:
   - alias: 'Bedtime'
@@ -450,7 +465,7 @@ automation 6:
         - switch.hall_light_switch
       - service: homeassistant.turn_off
         entity_id:
-        - switch.living_room_ligh_switch # Livingroom lights
+        - switch.living_room_ligh_switch # Living room lights
         - switch.dining_room_switch
         - switch.tv_outlet_switch
         - media_player.loki
