@@ -76,7 +76,7 @@ Washer dryer
      - [x] Bedroom light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
      - [ ] Switch for fan (1 main switch)
      - [ ] Master bath light group (1 main switch)
-   - [x] Auxilary group (2 main switches (+ 1 aux switch?))
+   - [x] Auxiliary group (2 main switches (+ 1 aux switch?))
      - [x] Hallway light (1 main switch + 1 aux switch [aux switch not needed])
      - [x] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Door sensor
