@@ -173,12 +173,14 @@ camera 2:
 sensor 2: 
     - platform: systemmonitor
       resources: 
-        - type: 'disk_use_percent'
-          arg: '/Pool1-Working'
-        - type: 'disk_free'
-          arg: '/Pool1-Working'
+        #- type: 'disk_use_percent'
+        #  arg: '/Pool1-Working'
         #- type: 'disk_free'
-        #  arg: '/'
+        #  arg: '/Pool1-Working'
+        - type: 'disk_use_percent'
+            arg: '/'
+        - type: 'disk_free'
+          arg: '/'
         - type: 'memory_use_percent'
         - type: 'memory_use'
         - type: 'memory_free'
