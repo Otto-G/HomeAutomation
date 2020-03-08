@@ -128,6 +128,10 @@ sensor:
 #      - daily_summary
       - uv_index
 
+sensor 7:
+  - platform: statistics
+    entity_id: sensor.dark_sky_pressure
+
 weather:
   - platform: darksky
     api_key: !secret darksky_key
