@@ -369,12 +369,10 @@ automation 2:
           - switch.tv_outlet_switch
       - service: climate.set_temperature
         data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
-          temperature: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
-          temperature: 68
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80
+          target_temp_low: 68
+          hvac_mode: heat_cool
       - condition: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
@@ -426,10 +424,8 @@ automation 4:
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
           target_temp_high: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
           target_temp_low: 64
+          hvac_mode: heat_cool
 
 automation 5:
   - alias: 'Turn off lights in the morning if needed'
@@ -487,10 +483,8 @@ automation 7:
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
           target_temp_high: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
           target_temp_low: 64
+          hvac_mode: heat_cool
       - service: homeassistant.turn_off
         entity_id:
         - switch.bedroom_lights_switch
@@ -512,10 +506,8 @@ automation 8:
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
           target_temp_high: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
           target_temp_low: 68
+          hvac_mode: heat_cool
       - service: homeassistant.turn_on
         entity_id:
         - switch.tv_outlet_switch
