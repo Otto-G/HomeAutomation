@@ -174,7 +174,7 @@ sensor 2:
     - platform: systemmonitor
       resources: 
         - type: 'disk_use_percent'
-          arg: '/'
+          arg: '/Pool1-Working'
         - type: 'disk_free'
           arg: '/Pool1-Working'
         #- type: 'disk_free'
