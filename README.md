@@ -1,6 +1,10 @@
 # HomeAutomation
 Automating different parts of the house.
-This is using [home-assistant](https://home-assistant.io/) as the base control.  Home assistant uses github as their base repository for their code [here](https://github.com/home-assistant/home-assistant) 
+This is using [home-assistant](https://home-assistant.io/) as the base control.  Home assistant uses github as their
+ base repository for their code [here](https://github.com/home-assistant/home-assistant)
+ 
+ The system that Home-Assistant is running on is currently going through a change from Freenas to Debian with ZFS on
+  Linux.  
 
 ## Tasks that need to be run based on the day
 Monday - Friday
@@ -46,7 +50,7 @@ Washer dryer
 
 ## Parts list
 
- - [x] Freenas box
+ - [x] Freenas box --> Pending change to Debian w/ ZFS on Linux
    - [InWin IW-MS04 ITX Case](https://www.amazon.com/gp/product/B0167NCADS/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
    - [AsRock J3710](https://www.amazon.com/gp/product/B01E97ZTPA/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
    - [8GB Crucial Ram x 1](https://www.amazon.com/gp/product/B006YG8X9Y/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1)
@@ -72,7 +76,7 @@ Washer dryer
      - [x] Bedroom light group (1 [main switch](https://www.amazon.com/gp/product/B00PYMGOHM?th=1&pldnSite=1))
      - [ ] Switch for fan (1 main switch)
      - [ ] Master bath light group (1 main switch)
-   - [x] Auxilary group (2 main switches (+ 1 aux switch?))
+   - [x] Auxiliary group (2 main switches (+ 1 aux switch?))
      - [x] Hallway light (1 main switch + 1 aux switch [aux switch not needed])
      - [x] Utility room (washer & dryer) (1 [automatic switch](https://www.amazon.com/TOPGREENER-TSOS5-W-Single-Pole-Fluorescent-Incandescent/dp/B015G8VLNA/ref=sr_1_4?s=hi&ie=UTF8&qid=1487179597&sr=1-4&keywords=automatic+light+switch))
  - [ ] Door sensor
