@@ -131,6 +131,7 @@ sensor:
 sensor 7:
   - platform: statistics
     entity_id: sensor.dark_sky_pressure
+    name: Pressure Change
 
 weather:
   - platform: darksky
