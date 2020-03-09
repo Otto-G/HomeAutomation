@@ -178,7 +178,7 @@ sensor 2:
         #- type: 'disk_free'
         #  arg: '/Pool1-Working'
         - type: 'disk_use_percent'
-            arg: '/'
+          arg: '/'
         - type: 'disk_free'
           arg: '/'
         - type: 'memory_use_percent'
