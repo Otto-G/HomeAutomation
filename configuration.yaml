@@ -172,7 +172,7 @@ camera 2:
       name: DaytonArtWave
     - platform: generic
       still_image_url: https://water.weather.gov/resources/hydrographs/dbvo1_hg.png
-      name: DaytonArtWave
+      name: BigDarby
 
 ###################################################
 #                  System info                    #
