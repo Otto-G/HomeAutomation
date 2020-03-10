@@ -274,8 +274,8 @@ sensor 6:
 
 # Groups
 group: 
-    Freenas:
-      name: Freenas
+    DebianNas:
+      name: Debian Nas
       entities: 
         - sensor.processor_use
         - sensor.cpu_0_temperature
