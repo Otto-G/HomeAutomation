@@ -134,7 +134,7 @@ sensor 7:
     name: Pressure Change
 
 weather:
-  - platform: darksky
+  - platform: darksky  # Change to NWS since darksky is getting killed off by 2021
     api_key: !secret darksky_key
     mode: daily
 
