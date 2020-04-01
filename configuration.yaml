@@ -89,7 +89,7 @@ zone 2:
 ###################################################
 
 zwave:
-    usb_path: /dev/cuaU0
+    usb_path: /dev/ttyACM0
     polling_interval: 10000 # Polling speed in milliseconds
     # High polling number was needed to keep z-wave network stable and working
 
@@ -128,8 +128,13 @@ sensor:
 #      - daily_summary
       - uv_index
 
+sensor 7:
+  - platform: statistics
+    entity_id: sensor.dark_sky_pressure
+    name: Pressure Change
+
 weather:
-  - platform: darksky
+  - platform: darksky  # Change to NWS since darksky is getting killed off by 2021
     api_key: !secret darksky_key
     mode: daily
 
@@ -159,6 +164,15 @@ camera 2:
     - platform: generic
       still_image_url: https://water.weather.gov/resources/hydrographs/mrdo1_hg.png
       name: MadRiverDayton
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/delo1_hg.png
+      name: Olentangy
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/dtno1_hg.png
+      name: DaytonArtWave
+    - platform: generic
+      still_image_url: https://water.weather.gov/resources/hydrographs/dbvo1_hg.png
+      name: BigDarby
 
 ###################################################
 #                  System info                    #
@@ -168,6 +182,10 @@ camera 2:
 sensor 2: 
     - platform: systemmonitor
       resources: 
+        #- type: 'disk_use_percent'
+        #  arg: '/Pool1-Working'
+        #- type: 'disk_free'
+        #  arg: '/Pool1-Working'
         - type: 'disk_use_percent'
           arg: '/'
         - type: 'disk_free'
@@ -182,17 +200,17 @@ sensor 2:
     
     - platform: command_line
       name: cpu_0_temperature
-      command: cat /home/.homeassistant/HomeAutomation/cpu0temp.txt
+      command: cat /config/cpu0temp.txt
       unit_of_measurement: "°C"
     
     - platform: command_line
       name: HD_1_Temperature
-      command: cat /home/.homeassistant/HomeAutomation/HD1temp.txt
+      command: cat /config/HD1temp.txt
       unit_of_measurement: "°C"
 
     - platform: command_line
       name: HD_2_Temperature
-      command: cat /home/.homeassistant/HomeAutomation/HD2temp.txt
+      command: cat /config/HD2temp.txt
       unit_of_measurement: "°C"
 
 ###################################################
@@ -256,26 +274,8 @@ sensor 6:
 
 # Groups
 group: 
-    default_view: 
-      view: yes
-      entities: 
-        - device_tracker.michael_pixel3
-        - sensor.gridcoin
-        - group.Freenas
-        - group.weather
-        - group.cameras
-
-    Control:
-      view: yes
-      entities:
-        - group.HomeLights
-#        - group.media_players
-        - group.all_automations
-
-### Details
-
-    Freenas:
-      name: Freenas
+    DebianNas:
+      name: Debian Nas
       entities: 
         - sensor.processor_use
         - sensor.cpu_0_temperature
@@ -288,10 +288,6 @@ group:
         - sensor.hd_1_temperature
         - sensor.hd_2_temperature
         - sensor.last_boot
-        - sensor.transmission_status
-        - sensor.transmission_down_speed
-        - sensor.transmission_up_speed
-        - switch.transmission
 
     weather:
       name: Weather
@@ -371,12 +367,10 @@ automation 2:
           - switch.tv_outlet_switch
       - service: climate.set_temperature
         data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
-          temperature: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
-          temperature: 68
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80
+          target_temp_low: 68
+          hvac_mode: heat_cool
       - condition: numeric_state
         entity_id: sun.sun
         value_template: '{{ state.attributes.elevation }}'
@@ -426,12 +420,10 @@ automation 4:
         - switch.tv_outlet_switch
       - service: climate.set_temperature
         data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
-          temperature: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
-          temperature: 64
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80
+          target_temp_low: 64
+          hvac_mode: heat_cool
 
 automation 5:
   - alias: 'Turn off lights in the morning if needed'
@@ -487,12 +479,10 @@ automation 7:
     action:
       - service: climate.set_temperature
         data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
-          temperature: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
-          temperature: 64
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80
+          target_temp_low: 64
+          hvac_mode: heat_cool
       - service: homeassistant.turn_off
         entity_id:
         - switch.bedroom_lights_switch
@@ -512,12 +502,10 @@ automation 8:
     action:
       - service: climate.set_temperature
         data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_cooling_1
-          temperature: 80
-      - service: climate.set_temperature
-        data:
-          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_heating_1
-          temperature: 68
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80
+          target_temp_low: 68
+          hvac_mode: heat_cool
       - service: homeassistant.turn_on
         entity_id:
         - switch.tv_outlet_switch
