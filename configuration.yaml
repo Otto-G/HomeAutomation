@@ -204,14 +204,20 @@ sensor 2:
       unit_of_measurement: "°C"
     
     - platform: command_line
-      name: HD_1_Temperature
-      command: cat /config/HD1temp.txt
+      name: P8J8XDVR_Temperature
+      command: cat /config/P8J8XDVRtemp.txt
       unit_of_measurement: "°C"
 
     - platform: command_line
-      name: HD_2_Temperature
-      command: cat /config/HD2temp.txt
+      name: 200703809989_Temperature
+      command: cat /config/200703809989temp.txt
       unit_of_measurement: "°C"
+
+    - platform: command_line
+      name: P8G1G7YR_Temperature
+      command: cat /config/P8G1G7YRtemp.txt
+      unit_of_measurement: "°C"
+
 
 ###################################################
 #              Presence Detection                 #
