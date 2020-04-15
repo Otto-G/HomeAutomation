@@ -254,16 +254,7 @@ mqtt:
   username: !secret mqtt_user
   password: !secret mqtt_pass
   
-###################################################
-#                  Transmission                   #
-###################################################
 
-transmission:
-  host: 192.168.1.2
-#  username: !secret transmission_user
-#  password: !secret transmission_pass
-
-    
 ###################################################
 #                      Mining                     #
 ###################################################
