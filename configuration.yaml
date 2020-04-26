@@ -105,32 +105,16 @@ zwave:
 
 # Weather Prediction
 sensor:
-    platform: darksky
-    api_key: !secret darksky_key
-    scan_interval:
-      minutes: 5
-    monitored_conditions:
-#      - summary
-#      - temperature
-      - precip_type
-      - precip_intensity
-      - precip_probability
-#      - wind_speed
-#      - wind_bearing
-#      - cloud_cover
-#      - humidity
-      - dew_point
-      - pressure
-      - visibility
-#      - ozone
-#      - minutely_summary
-#      - hourly_summary
-#      - daily_summary
-      - uv_index
+  - platform: template
+    sensors:
+      nws_pressure:
+        friendly_name: "Pressure"
+        unit_of_measurement: 'inHg'
+        value_template: "{{ state_attr('weather.kmrt', 'pressure') }}"
 
-sensor 7:
-  - platform: statistics
-    entity_id: sensor.dark_sky_pressure
+sensor 3:
+  - platform: derivative
+    entity_id: sensor.nws_pressure
     name: Pressure Change
 
 weather:
