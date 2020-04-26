@@ -114,7 +114,7 @@ sensor:
 
 sensor 3:
   - platform: derivative
-    entity_id: sensor.nws_pressure
+    source: sensor.nws_pressure
     name: Pressure Change
 
 weather:
