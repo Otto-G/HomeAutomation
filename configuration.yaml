@@ -115,6 +115,7 @@ sensor:
 sensor 3:
   - platform: derivative
     source: sensor.nws_pressure
+    unit: 'inHg'
     name: Pressure Change
 
 weather:
