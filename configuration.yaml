@@ -110,7 +110,7 @@ sensor:
       nws_pressure:
         friendly_name: "Pressure"
         unit_of_measurement: 'mbar'
-        value_template: "{{ state_attr('weather.kmrt_daynight', 'pressure')|float * 33.8639 }}"
+        value_template: "{{ state_attr('weather.kmrt_daynight', 'pressure')|float * 33.8639 | round(2) }}"
 
 sensor 3:
   - platform: derivative
