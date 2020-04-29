@@ -109,20 +109,14 @@ sensor:
     sensors:
       nws_pressure:
         friendly_name: "Pressure"
-        unit_of_measurement: 'inHg'
-        value_template: "{{ state_attr('weather.kmrt', 'pressure') }}"
+        unit_of_measurement: 'mbar'
+        value_template: "{{ state_attr('weather.kmrt_daynight', 'pressure')|float * 33.8639 }}"
 
 sensor 3:
   - platform: derivative
     source: sensor.nws_pressure
-    unit: 'inHg'
+    unit: 'mbar'
     name: Pressure Change
-
-weather:
-  - platform: nws
-    api_key: !secret nws_key
-    # Lat and longitude are taken from the default values in HASS
-    station: !secret nws_station  # Will be discovered by the main lat & long, but I felt like specifying it
 
 iqvia:
     zip_code: !secret zipCode
