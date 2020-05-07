@@ -126,6 +126,14 @@ sensor 4:
         unit_of_measurement: 'mbar'
         value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
 
+sensor 5:
+  - platform: template
+    sensors:
+      pressure_filtered:
+        friendly_name: "Pressure Filtered"
+        unit_of_measurement: 'mbar'
+        value_template: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
+
 iqvia:
     zip_code: !secret zipCode
     monitored_conditions:
