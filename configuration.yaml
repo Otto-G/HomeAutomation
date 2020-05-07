@@ -124,13 +124,7 @@ sensor 4:
       Pressure Change Filtered:
         friendly_name: "Pressure Change Filtered"
         unit_of_measurement: 'mbar'
-        value_template: "{% if float(states.sensor.pressure_change.state) > 200 %}
-                          0
-                         {% elif float(states.sensor.pressure_change.state) < -200 %}
-                          0
-                         {% else %}
-                          {{ states.sensor.pressure_change.state }}
-                         {% endif %}"
+        value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
 
 iqvia:
     zip_code: !secret zipCode
