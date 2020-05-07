@@ -219,16 +219,7 @@ sensor 2:
 #              Presence Detection                 #
 ###################################################
 
-#Tracking through owntracks
-owntracks:
-
-  # If newly discovered devices are tracked by default (default: yes)
-  track_new_devices: yes
-  # Seconds between each scan for new devices
-  interval_seconds: 12
-  # Seconds to wait until marking someone as not home after not being seen
-  # (default: 180)
-  consider_home: 600 # is 10min
+#Tracking is now done through HomeAssistant Phone app
 
 ###################################################
 #                  Notifications                  #
