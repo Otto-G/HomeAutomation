@@ -121,7 +121,7 @@ sensor 3:
 sensor 4:
   - platform: template
     sensors:
-      Pressure Change Filtered:
+      pressure_change_filtered:
         friendly_name: "Pressure Change Filtered"
         unit_of_measurement: 'mbar'
         value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
