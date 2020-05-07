@@ -112,12 +112,14 @@ sensor:
         unit_of_measurement: 'mbar'
         value_template: "{{ state_attr('weather.kmrt_daynight', 'pressure')|float * 33.8639 | round(2) }}"
 
+# Finding the rate of change of the pressure
 sensor 3:
   - platform: derivative
     source: sensor.nws_pressure
     unit: 'mbar'
     name: Pressure Change
 
+# Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
 sensor 4:
   - platform: template
     sensors:
@@ -126,6 +128,7 @@ sensor 4:
         unit_of_measurement: 'mbar'
         value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
 
+# Filtering out the pressure to translate 0 vales (not possible) to None to improve graph.
 sensor 5:
   - platform: template
     sensors:
