@@ -267,46 +267,6 @@ sensor 6:
 
 # Groups
 group: 
-    DebianNas:
-      name: Debian Nas
-      entities: 
-        - sensor.processor_use
-        - sensor.cpu_0_temperature
-        - sensor.memory_use_percent
-        - sensor.memory_use
-        - sensor.swap_use_percent
-#        - sensor.swap_free
-        - sensor.disk_free
-#        - sensor.disk_use
-        - sensor.hd_1_temperature
-        - sensor.hd_2_temperature
-        - sensor.last_boot
-
-    weather:
-      name: Weather
-      entities: 
-        - sensor.dark_sky_summary
-        - sensor.dark_sky_hourly_summary
-        - sensor.dark_sky_temperature
-        - sensor.dark_sky_precip
-        - sensor.dark_sky_precip_intensity
-        - sensor.dark_sky_precip_probability
-        - sensor.dark_sky_pressure
-        - sensor.dark_sky_wind_speed
-        - sensor.dark_sky_humidity
-        - sensor.dark_sky_dew_point
-#        - sensor.dark_sky_visibility
-        - sensor.dark_sky_uv_index
-        - sensor.allergy_index_today_2
-        - sensor.allergy_index_tomorrow_2
-        - sensor.allergy_index_yesterday_2
-
-    cameras:
-      name: Watching
-      entities:
-        - camera.HomeWeatherRadar
-
-
     HomeLights:
       name: HomeLights
       entities:
