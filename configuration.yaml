@@ -99,6 +99,7 @@ zwave:
 
 google_assistant:
   project_id: !secret google_project_id
+  service_account: !include SERVICE_ACCOUNT.JSON  # Needed for report_state=true
   report_state: true
   exposed_domains:
     - switch
