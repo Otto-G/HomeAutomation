@@ -94,10 +94,14 @@ zwave:
     # High polling number was needed to keep z-wave network stable and working
 
 ###################################################
-#                    Devices                      #
+#                     Google                      #
 ###################################################
 
-
+google_assistant:
+  project_id: !secret google_project_id
+  report_state: true
+  exposed_domains:
+    - switch
 
 ###################################################
 #                    Weather                      #
