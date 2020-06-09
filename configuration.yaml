@@ -320,7 +320,7 @@ automation 2:
       - service: climate.set_temperature
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
-          target_temp_high: 80
+          target_temp_high: 78
           target_temp_low: 68
           hvac_mode: heat_cool
       - condition: numeric_state
@@ -373,7 +373,7 @@ automation 4:
       - service: climate.set_temperature
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
-          target_temp_high: 80
+          target_temp_high: 80  # Leaving at 80 since night time is normally cool enough
           target_temp_low: 64
           hvac_mode: heat_cool
 
@@ -432,7 +432,7 @@ automation 7:
       - service: climate.set_temperature
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
-          target_temp_high: 80
+          target_temp_high: 80  # Leaving at 80 since it isn't too bad
           target_temp_low: 64
           hvac_mode: heat_cool
       - service: homeassistant.turn_off
@@ -455,7 +455,7 @@ automation 8:
       - service: climate.set_temperature
         data:
           entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
-          target_temp_high: 80
+          target_temp_high: 78
           target_temp_low: 68
           hvac_mode: heat_cool
       - service: homeassistant.turn_on
