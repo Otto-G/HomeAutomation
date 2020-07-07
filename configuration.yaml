@@ -108,6 +108,10 @@ google_assistant:
 #                    Weather                      #
 ###################################################
 
+weather:
+  - platform: buienradar
+    name: 'home'
+
 # Weather Prediction
 sensor:
   - platform: template
