@@ -239,9 +239,16 @@ notify:
     name: pushbullet
 
 ###################################################
-#                      Servers                    #
+#                     Computers                   #
 ###################################################
 
+wake_on_lan:
+
+switch:
+  - platform: wake_on_lan
+    name: "Demios Desktop"
+    mac: 70:85:c2:57:2a:83
+    broadcast_address: 192.168.1.11
 
 ###################################################
 #                      Mining                     #
