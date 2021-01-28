@@ -242,13 +242,14 @@ notify:
 #                     Computers                   #
 ###################################################
 
-wake_on_lan:
-
 switch:
-  - platform: wake_on_lan
-    name: "Demios Desktop"
-    mac: 70:85:c2:57:2a:83
-    broadcast_address: 192.168.1.11
+  - platform: command_line
+    switches:
+      desktop_pc:
+        friendly_name: "Demios Desktop"
+        command_off: "/usr/bin/curl http://192.168.1.11:7760/suspend"
+        command_on: "/usr/bin/ssh hawol@192.168.1.55"
+        value_template: "{{ states('binary_sensor.desktop_pc') }}"
 
 ###################################################
 #                      Mining                     #
