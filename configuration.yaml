@@ -248,7 +248,7 @@ switch:
       desktop_pc:
         friendly_name: "Demios Desktop"
         command_off: "/usr/bin/curl http://192.168.1.11:7760/suspend"
-        command_on: "/usr/bin/ssh hawol@192.168.1.55"
+        command_on: "/usr/bin/ssh hawol@192.168.1.55 wakeonlan 70:85:c2:57:2a:83"
         value_template: "{{ states('binary_sensor.desktop_pc') }}"
 
 binary_sensor:
