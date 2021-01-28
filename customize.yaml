@@ -26,3 +26,5 @@ zone.home:
   radius: 150
 group.default_view:
   friendly_name: Home
+switch.desktop_pc:
+  assumed_state: false

@@ -251,6 +251,13 @@ switch:
         command_on: "/usr/bin/ssh hawol@192.168.1.55"
         value_template: "{{ states('binary_sensor.desktop_pc') }}"
 
+binary_sensor:
+  - platform: ping
+    host: 192.168.1.11
+    name: "Demios Desktop"
+    count: 2
+    scan_interval: 30
+
 ###################################################
 #                      Mining                     #
 ###################################################
