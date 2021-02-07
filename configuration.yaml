@@ -249,7 +249,7 @@ switch:
         friendly_name: "Demios Desktop"
         command_off: "/usr/bin/curl http://192.168.1.11:7760/suspend"
         command_on: "/usr/bin/ssh hawol@192.168.1.55 wakeonlan 70:85:c2:57:2a:83"
-        command_state: "ping -c 1 -W 2 192.168.1.11 &> /dev/null; echo $?"
+        command_state: "/bin/ping -c 1 -W 2 192.168.1.11 &> /dev/null; echo $?"
 
 ###################################################
 #                      Mining                     #
