@@ -252,13 +252,6 @@ switch:
         command_state: "/bin/ping -c 1 -W 2 192.168.1.200 &> /dev/null; echo $?"
         value_template: '{{ value == "0" }}'
 
-###################################################
-#                      Mining                     #
-###################################################
-
-sensor 6:
-  - platform: coinmarketcap
-    currency_id: 833
     
 ###################################################
 #                    Groups                       #
