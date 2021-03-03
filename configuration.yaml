@@ -25,7 +25,7 @@ homeassistant:
 
 # Configuration for the website
 http:
-    base_url: !secret base_url
+    # base_url: !secret base_url
     
 #System health component
 system_health:
