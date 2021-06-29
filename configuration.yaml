@@ -475,3 +475,6 @@ automation 9:
         data:
           message: "Garage door opened"
           title: "Door Opened"
+
+shell_command:
+  rebootNCaseM1: "/usr/bin/curl http://192.168.1.200:7760/reboot"
