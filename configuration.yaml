@@ -26,6 +26,9 @@ homeassistant:
 # Configuration for the website
 http:
     # base_url: !secret base_url
+    use_x_forwarded_for: true
+    trusted_proxies:
+      - 172.17.0.0/24
     
 #System health component
 system_health:
