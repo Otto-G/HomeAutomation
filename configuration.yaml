@@ -477,4 +477,4 @@ automation 9:
           title: "Door Opened"
 
 shell_command:
-  rebootNCaseM1: "/usr/bin/curl http://192.168.1.200:7760/reboot"
+  rebootNCaseM1: /usr/bin/curl http://192.168.1.200:7760/reboot
