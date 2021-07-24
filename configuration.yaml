@@ -484,7 +484,7 @@ automation 10:
     # Sends notifications out when the litter box is full
     initial state: 'on'
     trigger:
-      platform: numeric_state
+      - platform: numeric_state
         entity_id: sensor.poop_globe_1_waste_drawer
         above: 98
         action:
@@ -492,14 +492,14 @@ automation 10:
 #           data:
 #             message: "Litter Box is Full"
 #             title: "Litter Robot"
-        - service: notify.mobile_app_michaels_ipad
-          data:
-            message: "Litter Box is Full"
-            title: "Litter Robot"
-         - service: notify.mobile_app_pixel_3
-           data:
-             message: "Litter Box is Full"
-             title: "Litter Robot"
+          - service: notify.mobile_app_michaels_ipad
+            data:
+              message: "Litter Box is Full"
+              title: "Litter Robot"
+           - service: notify.mobile_app_pixel_3
+             data:
+               message: "Litter Box is Full"
+               title: "Litter Robot"
 
 
 shell_command:
