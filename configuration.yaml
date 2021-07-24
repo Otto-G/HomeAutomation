@@ -480,7 +480,7 @@ automation 9:
           title: "Door Opened"
 
 automation 10:
-  - alaias: 'Litter Robot Full'
+  - alias: 'Litter Robot Full'
     # Sends notifications out when the litter box is full
     initial state: 'on'
     trigger:
