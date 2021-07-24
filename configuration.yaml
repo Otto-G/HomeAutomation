@@ -482,7 +482,7 @@ automation 9:
 automation 10:
   - alias: 'Litter Robot Full'
     # Sends notifications out when the litter box is full
-    initial state: 'on'
+    initial_state: 'on'
     trigger:
       - platform: numeric_state
         entity_id: sensor.poop_globe_1_waste_drawer
