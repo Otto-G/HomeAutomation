@@ -488,19 +488,18 @@ automation 10:
         entity_id: sensor.poop_globe_1_waste_drawer
         above: 98
         action:
-#         - service: notify.pushbullet
-#           data:
-#             message: "Litter Box is Full"
-#             title: "Litter Robot"
           - service: notify.mobile_app_michaels_ipad
             data:
               message: "Litter Box is Full"
               title: "Litter Robot"
-           - service: notify.mobile_app_pixel_3
-             data:
-               message: "Litter Box is Full"
-               title: "Litter Robot"
-
+          - service: notify.mobile_app_pixel_3
+            data:
+              message: "Litter Box is Full"
+              title: "Litter Robot"
+#         - service: notify.pushbullet
+#           data:
+#             message: "Litter Box is Full"
+#             title: "Litter Robot"
 
 shell_command:
   reboot_ncase_m1: /usr/bin/curl http://192.168.1.200:7760/reboot
