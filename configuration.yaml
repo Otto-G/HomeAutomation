@@ -56,7 +56,6 @@ history:
 # Configuring recorder to keep size down
 recorder:
     purge_keep_days: 7
-    purge_interval: 1
 
 # Enable config screen
 config:
