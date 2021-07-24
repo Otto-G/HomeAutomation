@@ -491,6 +491,10 @@ automation 10:
         data:
           message: "Litter Box is Full"
           title: "Litter Robot"
+          data:
+            push:
+              badge: 1
+              interruption-level: active
       - service: notify.mobile_app_pixel_3
         data:
           message: "Litter Box is Full"
