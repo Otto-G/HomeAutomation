@@ -145,11 +145,11 @@ sensor 5:
 
 sensor 6:
   - platform: template
-      sensors:
-        nws_temperature:
-          friendly_name: "Temperature"
-          unit_of_measurement: 'F'
-          value_template: "{{ state_attr('weather.kmrt_daynight', 'temperature') }}"
+    sensors:
+      nws_temperature:
+        friendly_name: "Temperature"
+        unit_of_measurement: 'F'
+        value_template: "{{ state_attr('weather.kmrt_daynight', 'temperature') }}"
 
 sensor 7:
   - platform: statistics
