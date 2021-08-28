@@ -1,0 +1,217 @@
+  - id: turn_on_lights_at_dusk
+    alias: 'Turn on Lights at Dusk'
+    # Turns on Living room and outdoor lights when the sun goes down
+    initial_state: 'on'
+    trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: 1.0
+    action:
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.coach_lights_switch # Coach lights
+      - condition: state
+        entity_id: switch.hall_light_switch
+        state: 'off'
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.living_room_ligh_switch # Living room lights
+
+  - id: turn_on_lights_in_the_morning_after_alarm
+    alias: 'Turn on lights in the morning after alarm'
+    # Turns on master bedroom lights in the morning to help wake up
+    # Relies on Sleep as Android (and tasker) for trigger and sun state for other lights
+    initial_state: 'on'
+    trigger:
+      platform: webhook
+      webhook_id: !secret morning_light_webhook
+    action:
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.bedroom_lights_switch # Master bedroom lights
+          - switch.tv_outlet_switch
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 78
+          target_temp_low: 68
+          hvac_mode: heat_cool
+      - condition: numeric_state
+        entity_id: sun.sun
+        value_template: '{{ state.attributes.elevation }}'
+        below: 0.5
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.living_room_ligh_switch # Living room lights
+
+  - id: turn_off_lights_at_night
+    alias: 'Turn off Lights at Night'
+    # Turn off Living room lights to force me to bed or if I have fallen asleep without starting sleep tracking.
+    # Also turns off outside lights as they don't need to stay on all night.
+    initial_state: 'on'
+    trigger:
+      platform: time
+      at: '2:00:00'
+    action:
+      service: homeassistant.turn_off
+      entity_id:
+        - switch.coach_lights_switch # Coach lights
+        - switch.living_room_ligh_switch # Living room lights
+        - switch.kitchen_light
+        - switch.dining_room_switch
+        - media_player.loki
+        - switch.hall_light_switch
+        - switch.entryway_light_switch
+        - switch.tv_outlet_switch
+        - switch.bedroom_lights_switch # Master bedroom lights
+
+  - id: sleep_time
+    alias: 'Sleep time'
+    # Turns off all inside lights after starting sleep.  Uses mqtt and tasker to send the message
+    initial_state: 'on'
+    trigger:
+      platform: webhook
+      webhook_id: !secret sleep_time_webhook
+    action:
+      - service: homeassistant.turn_off
+        entity_id:
+        - switch.living_room_ligh_switch # Living room lights
+        - switch.bedroom_lights_switch # Master bedroom lights
+        - switch.kitchen_light
+        - switch.dining_room_switch
+        - media_player.loki
+        - switch.hall_light_switch
+        - switch.entryway_light_switch
+        - switch.tv_outlet_switch
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80  # Leaving at 80 since night time is normally cool enough
+          target_temp_low: 64
+          hvac_mode: heat_cool
+
+  - id: turn_off_lights_in_the_morning_if_needed
+    alias: 'Turn off lights in the morning if needed'
+    # Turns off lights in the morning if the sun rises after 6:30.
+    # This excludes the master bedroom as I may still need the lights on.
+    initial_state: 'on'
+    trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      above: 1.0
+    condition:
+      condition: time
+      after: '06:00:00'
+    action:
+      service: homeassistant.turn_off
+      entity_id:
+        - switch.living_room_ligh_switch # Living room lights
+
+  - id: bedtime
+    alias: 'Bedtime'
+    # Turns off main lights and TV when it is bedtime.  Uses webhooks and tasker to send the message
+    initial_state: 'on'
+    trigger:
+      platform: webhook
+      webhook_id: !secret bedtime_webhook
+    condition:
+      condition: state
+      entity_id: switch.living_room_ligh_switch
+      state: 'on'
+    action:
+      - service: homeassistant.turn_on
+        entity_id:
+        - switch.entryway_light_switch
+        - switch.hall_light_switch
+      - service: homeassistant.turn_off
+        entity_id:
+        - switch.living_room_ligh_switch # Living room lights
+        - switch.dining_room_switch
+        - switch.tv_outlet_switch
+        - media_player.loki
+
+  - id: away_mode
+    alias: 'Away Mode'
+    # Sets house to away mode
+    initial_state: 'on'
+    trigger:
+      platform: zone
+      event: leave
+      zone: zone.home
+      entity_id: device_tracker.michael_pixel3
+    action:
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 80  # Leaving at 80 since it isn't too bad
+          target_temp_low: 64
+          hvac_mode: heat_cool
+      - service: homeassistant.turn_off
+        entity_id:
+        - switch.bedroom_lights_switch
+        - switch.tv_outlet_switch
+        - switch.kitchen_light
+        - switch.dining_room_switch
+
+  - id: home
+    alias: 'Home'
+    # Sets house to at home mode
+    initial_state: 'on'
+    trigger:
+      platform: zone
+      event: enter
+      zone: zone.home
+      entity_id: device_tracker.michael_pixel3
+    action:
+      - service: climate.set_temperature
+        data:
+          entity_id: climate.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_mode
+          target_temp_high: 78
+          target_temp_low: 68
+          hvac_mode: heat_cool
+      - service: homeassistant.turn_on
+        entity_id:
+        - switch.tv_outlet_switch
+
+  - id: door_notification
+    alias: 'Door Notification'
+    # Sends notification when door opened if not home
+    initial_state: 'on'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor
+      from: 'off'
+      to: 'on'
+    condition:
+      condition: state
+      entity_id: device_tracker.michael_pixel3
+      state: 'not_home'
+    action:
+      - service: notify.pushbullet
+        data:
+          message: "Garage door opened"
+          title: "Door Opened"
+
+  - id: litter_robot_full
+    alias: 'Litter Robot Full'
+    # Sends notifications out when the litter box is full
+    initial_state: 'on'
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.poop_globe_1_waste_drawer
+        above: 98
+    action:
+      - service: notify.mobile_app_michaels_ipad
+        data:
+          message: "Litter Box is Full"
+          title: "Litter Robot"
+          data:
+            push:
+              badge: 1
+              interruption-level: active
+      - service: notify.mobile_app_pixel_3
+        data:
+          message: "Litter Box is Full"
+          title: "Litter Robot"
