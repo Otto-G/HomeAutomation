@@ -148,7 +148,7 @@ sensor 6:
     sensors:
       nws_temperature:
         friendly_name: "Temperature"
-        unit_of_measurement: 'F'
+        unit_of_measurement: '°F'
         value_template: "{{ state_attr('weather.kmrt_daynight', 'temperature') }}"
 
 sensor 7:
