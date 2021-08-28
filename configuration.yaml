@@ -154,6 +154,7 @@ sensor 6:
 
 sensor 7:
   - platform: statistics
+    name: nws_temperature_stats
     entity_id: sensor.nws_temperature
 
 iqvia:
