@@ -49,8 +49,9 @@ logbook:
           
 # View History of specific items
 history:
-#    include:
-#        entities:
+    include:
+        entities:
+          - sensor.nws_temperature
 
 # Configuring recorder to keep size down
 recorder:
