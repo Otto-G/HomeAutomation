@@ -51,7 +51,6 @@ logbook:
 history:
     include:
         entities:
-          - sensor.dark_sky_pressure
 
 # Configuring recorder to keep size down
 recorder:
@@ -143,6 +142,18 @@ sensor 5:
         friendly_name: "Pressure Filtered"
         unit_of_measurement: 'mbar'
         value_template: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
+
+sensor 6:
+  - platform: template
+      sensors:
+        nws_temperature:
+          friendly_name: "Temperature"
+          unit_of_measurement: 'F'
+          value_template: "{{ state_attr('weather.kmrt_daynight', 'temperature') }}"
+
+sensor 7:
+  - platform: statistics
+    entity_id: sensor.nws_temperature
 
 iqvia:
     zip_code: !secret zipCode
