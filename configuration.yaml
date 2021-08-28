@@ -155,6 +155,8 @@ sensor 6:
 sensor 7:
   - platform: statistics
     name: nws_temperature_stats
+    max_age: 7d
+    sampling_size: 500
     entity_id: sensor.nws_temperature
 
 iqvia:
