@@ -167,6 +167,14 @@ sensor 8:
         unit_of_measurement: '°F'
         value_template: "{{ states('sensor.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_temperature') | float}}"
 
+sensor 9:
+  - platform: template
+    sensors:
+      home_temp_float_offset:
+        friendly_name: "Home Temp Float"
+        unit_of_measurement: '°F'
+        value_template: "{{ states('sensor.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_temperature') | float - 10}}"
+
 iqvia:
     zip_code: !secret zipCode
     monitored_conditions:
