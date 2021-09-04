@@ -150,7 +150,7 @@ sensor 6:
       nws_temperature:
         friendly_name: "Temperature"
         unit_of_measurement: '°F'
-        value_template: "{{ state_attr('weather.kmrt_daynight', 'temperature') }}"
+        value_template: "{{ state_attr('weather.kmrt_daynight', 'temperature') | float}}"
 
 sensor 7:
   - platform: statistics
@@ -158,6 +158,14 @@ sensor 7:
     max_age: '168:00'
     sampling_size: 500
     entity_id: sensor.nws_temperature
+
+sensor 8:
+  - platform: template
+    sensors:
+      home_temp_float:
+        friendly_name: "Home Temp Float"
+        unit_of_measurement: '°F'
+        value_template: "{{ states('sensor.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_temperature') | float}}"
 
 iqvia:
     zip_code: !secret zipCode
