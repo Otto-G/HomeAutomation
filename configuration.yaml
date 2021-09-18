@@ -255,6 +255,10 @@ sensor 2:
       command: cat /config/P8G1G7YRtemp.txt
       unit_of_measurement: "°C"
 
+    - platform: command_line
+      name: zpool_status
+      command: cat /config/zpoolStatus.txt
+
 
 ###################################################
 #              Presence Detection                 #
