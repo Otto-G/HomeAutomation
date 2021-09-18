@@ -256,6 +256,11 @@ sensor 2:
       unit_of_measurement: "°C"
 
     - platform: command_line
+      name: ST4000VN008_Temperature
+      command: cat /config/ST4000VN008temp.txt
+      unit_of_measurement: "°C"
+
+    - platform: command_line
       name: zpool_status
       command: cat /config/zpoolStatus.txt
 
