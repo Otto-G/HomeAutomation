@@ -29,7 +29,7 @@ group.default_view:
   friendly_name: Home
 switch.desktop_pc:
   assumed_state: false
-sensor.p8g1g7yr_temperatur:
+sensor.p8g1g7yr_temperature:
   device_class: temperature
 sensor.st4000vn008_temperature:
   device_class: temperature
