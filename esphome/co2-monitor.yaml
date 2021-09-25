@@ -1,0 +1,61 @@
+esphome:
+  name: co2-monitor
+  platform: ESP32
+  board: heltec_wifi_kit_32_v2
+  
+# PinOuts
+# | Unit side | ESP32 side |
+# | --------- | ---------- |
+# | Tx		  | 22         |
+# | Rx        | 19         |
+# | GND       | GND        | 
+# | Vin       | 5V         | 
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: !secret co2ota
+
+wifi:
+  ssid: !secret wifiSSID
+  password: !secret wifiPass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Co2-Monitor Fallback Hotspot"
+    password: !secret co2pass
+
+captive_portal:
+
+uart:
+  rx_pin: 22
+  tx_pin: 19
+  baud_rate: 9600
+
+sensor:
+  - platform: mhz19
+    co2:
+      name: "MH-Z19 CO2 Value"
+      id: mh_z19_cO2_value
+      device_class: carbon_dioxide
+    temperature:
+      name: "MH-Z19 Temperature"
+      device_class: temperature
+    update_interval: 60s
+    automatic_baseline_calibration: false
+
+i2c:
+  sda: 4
+  scl: 15
+
+display:
+  - platform: ssd1306_i2c
+    model: "SSD1306 128x64"
+    reset_pin: 16
+    address: 0x3C
+    lambda: |-
+      it.printf(0, 0, "CO2: %.0f ppm", id(mh_z19_cO2_value).state);
