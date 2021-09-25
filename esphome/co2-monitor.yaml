@@ -51,6 +51,11 @@ sensor:
 i2c:
   sda: 4
   scl: 15
+  
+font:
+  - file: "fonts/Helvetica.ttf"
+    id: my_font
+    size: 18
 
 display:
   - platform: ssd1306_i2c
@@ -58,4 +63,4 @@ display:
     reset_pin: 16
     address: 0x3C
     lambda: |-
-      it.printf(0, 0, "CO2: %.0f ppm", id(mh_z19_cO2_value).state);
+      it.printf(0, 0, id(my_font), "CO2: %.0fppm", id(mh_z19_cO2_value).state);
