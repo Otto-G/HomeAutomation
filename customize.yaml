@@ -8,6 +8,7 @@ switch.coach_lights_switch:
   friendly_name: Coach lights
 sensor.cpu_0_temperature:
   friendly_name: CPU temperature
+  device_class: temperature
 sensor.hd_1_temperature:
   friendly_name: HD 1 Temperature
 sensor.hd_2_temperature:
@@ -28,3 +29,11 @@ group.default_view:
   friendly_name: Home
 switch.desktop_pc:
   assumed_state: false
+sensor.p8g1g7yr_temperatur:
+  device_class: temperature
+sensor.st4000vn008_temperature:
+  device_class: temperature
+sensor.p8j8xdvr_temperature:
+  device_class: temperature
+sensor.200703809989_temperature:
+  device_class: temperature

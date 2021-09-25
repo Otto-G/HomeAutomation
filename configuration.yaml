@@ -239,31 +239,26 @@ sensor 2:
       name: cpu_0_temperature
       command: cat /config/cpu0temp.txt
       unit_of_measurement: "°C"
-      device_class: temperature
     
     - platform: command_line
       name: P8J8XDVR_Temperature
       command: cat /config/P8J8XDVRtemp.txt
       unit_of_measurement: "°C"
-      device_class: temperature
 
     - platform: command_line
       name: 200703809989_Temperature
       command: cat /config/200703809989temp.txt
       unit_of_measurement: "°C"
-      device_class: temperature
 
     - platform: command_line
       name: P8G1G7YR_Temperature
       command: cat /config/P8G1G7YRtemp.txt
       unit_of_measurement: "°C"
-      device_class: temperature
 
     - platform: command_line
       name: ST4000VN008_Temperature
       command: cat /config/ST4000VN008temp.txt
       unit_of_measurement: "°C"
-      device_class: temperature
 
     - platform: command_line
       name: zpool_status
