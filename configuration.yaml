@@ -265,6 +265,9 @@ sensor 2:
       command: cat /config/zpoolStatus.txt
 
 
+apcupsd:
+
+
 ###################################################
 #              Presence Detection                 #
 ###################################################
