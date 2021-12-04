@@ -60,6 +60,9 @@ recorder:
 # Enable config screen
 config:
 
+# Enabling helpers
+default_config:
+
 # Enables the frontend
 frontend:
 
@@ -273,17 +276,6 @@ sensor 2:
         - battdate
 
 apcupsd:
-
-
-###################################################
-#                   Custom enteries               #
-###################################################
-
-template:
-  - binary_sensor:
-    - name: "naked"
-      state: "{{ states | selectattr('state', 'in', ['True', 'False']) }}"
-      unique_id: "binary_sensor.naked"
 
 
 ###################################################
