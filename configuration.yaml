@@ -128,6 +128,10 @@ sensor 3:
     source: sensor.nws_pressure
     unit: 'hPa'
     name: Pressure Change
+  - platform: derivative
+    source: sensor.air_bme280_pressure
+    unit: 'hPa'
+    name: Indoor Air Pressure Change
 
 # Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
 sensor 4:
@@ -274,6 +278,8 @@ sensor 2:
         - bcharge
         - lastxfer
         - battdate
+        - timeleft
+        - loadpct
 
 apcupsd:
 
