@@ -132,6 +132,7 @@ sensor 3:
     source: sensor.air_bme280_pressure
     unit: 'hPa'
     name: Indoor Air Pressure Change
+    time_window: "00:15:00"  # looking at the time change window over a 15min period
 
 # Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
 sensor 4:
