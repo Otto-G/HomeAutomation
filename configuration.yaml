@@ -276,10 +276,14 @@ apcupsd:
 
 
 ###################################################
-#              Presence Detection                 #
+#                   Custom enteries               #
 ###################################################
 
-#Tracking is now done through HomeAssistant Phone app
+template:
+  - binary_sensor:
+    - name: "naked"
+      state: "{{ states | selectattr('state', 'in', ['True', 'False']) }}"
+
 
 ###################################################
 #                  Notifications                  #
