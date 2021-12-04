@@ -283,6 +283,7 @@ template:
   - binary_sensor:
     - name: "naked"
       state: "{{ states | selectattr('state', 'in', ['True', 'False']) }}"
+      unique_id: "binary_sensor.naked"
 
 
 ###################################################
