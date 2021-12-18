@@ -165,6 +165,7 @@ sensor 7:
     name: nws_temperature_stats
     max_age: '168:00'
     sampling_size: 500
+    state_characteristic: mean
     entity_id: sensor.nws_temperature
 
 sensor 8:
