@@ -44,6 +44,7 @@ logbook:
     include:
         entities:
           - device_tracker.michael_pixel3
+          - sensor.ups_status
         domains:
           - automation
           
