@@ -44,6 +44,7 @@ logbook:
     include:
         entities:
           - device_tracker.michael_pixel3
+          - sensor.ups_status
         domains:
           - automation
           
@@ -59,6 +60,9 @@ recorder:
 
 # Enable config screen
 config:
+
+# Enabling helpers
+default_config:
 
 # Enables the frontend
 frontend:
@@ -90,10 +94,10 @@ zone 2:
 #                      Hubs                       #
 ###################################################
 
-zwave:
-    usb_path: /dev/ttyACM0
-    polling_interval: 10000 # Polling speed in milliseconds
-    # High polling number was needed to keep z-wave network stable and working
+#zwave:
+#    usb_path: /dev/ttyACM0
+#    polling_interval: 10000 # Polling speed in milliseconds
+#    # High polling number was needed to keep z-wave network stable and working
 
 ###################################################
 #                     Google                      #
@@ -116,15 +120,20 @@ sensor:
     sensors:
       nws_pressure:
         friendly_name: "Pressure"
-        unit_of_measurement: 'mbar'
+        unit_of_measurement: 'hPa'
         value_template: "{{ state_attr('weather.kmrt_daynight', 'pressure')|float * 33.8639 | round(2) }}"
 
 # Finding the rate of change of the pressure
 sensor 3:
   - platform: derivative
     source: sensor.nws_pressure
-    unit: 'mbar'
+    unit: 'hPa'
     name: Pressure Change
+  - platform: derivative
+    source: sensor.air_bme280_pressure
+    unit: 'hPa'
+    name: Indoor Air Pressure Change
+    time_window: "00:30:00"  # looking at the time change window over a 15min period
 
 # Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
 sensor 4:
@@ -132,7 +141,7 @@ sensor 4:
     sensors:
       pressure_change_filtered:
         friendly_name: "Pressure Change Filtered"
-        unit_of_measurement: 'mbar'
+        unit_of_measurement: 'hPa'
         value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
 
 # Filtering out the pressure to translate 0 vales (not possible) to None to improve graph.
@@ -141,7 +150,7 @@ sensor 5:
     sensors:
       pressure_filtered:
         friendly_name: "Pressure Filtered"
-        unit_of_measurement: 'mbar'
+        unit_of_measurement: 'hPa'
         value_template: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
 
 sensor 6:
@@ -157,6 +166,7 @@ sensor 7:
     name: nws_temperature_stats
     max_age: '168:00'
     sampling_size: 500
+    state_characteristic: mean
     entity_id: sensor.nws_temperature
 
 sensor 8:
@@ -165,7 +175,7 @@ sensor 8:
       home_temp_float:
         friendly_name: "Home Temp Float"
         unit_of_measurement: '°F'
-        value_template: "{{ states('sensor.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_temperature') | float}}"
+        value_template: "{{ states('sensor.z_wave_plus_thermostat_air_temperature') | float}}"
 
 sensor 9:
   - platform: template
@@ -173,7 +183,7 @@ sensor 9:
       home_temp_float_offset:
         friendly_name: "Home Temp Float"
         unit_of_measurement: '°F'
-        value_template: "{{ states('sensor.linear_nortek_security_control_llc_gc_tbz48_battery_powered_z_wave_thermostat_temperature') | float - 10}}"
+        value_template: "{{ states('sensor.z_wave_plus_thermostat_air_temperature') | float - 10}}"
 
 iqvia:
     zip_code: !secret zipCode
@@ -266,11 +276,17 @@ sensor 2:
       command: cat /config/zpoolStatus.txt
 
 
-###################################################
-#              Presence Detection                 #
-###################################################
+    - platform: apcupsd
+      resources:
+        - status
+        - bcharge
+        - lastxfer
+        - battdate
+        - timeleft
+        - loadpct
 
-#Tracking is now done through HomeAssistant Phone app
+apcupsd:
+
 
 ###################################################
 #                  Notifications                  #
