@@ -202,7 +202,8 @@ camera 2:
       still_image_url: https://water.weather.gov/resources/hydrographs/mrdo1_hg.png
       name: MadRiverDayton
     - platform: generic
-      still_image_url: https://water.weather.gov/resources/hydrographs/delo1_hg.png
+      # still_image_url: https://water.weather.gov/resources/hydrographs/delo1_hg.png
+      still_image_url: https://www.lrh-wc.usace.army.mil/wm/data/plots/forecast/delaware-lake-elev-flow-fcst.png?20220415-8-4
       name: Olentangy
     - platform: generic
       still_image_url: https://water.weather.gov/resources/hydrographs/dtno1_hg.png
