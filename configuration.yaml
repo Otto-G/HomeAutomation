@@ -163,7 +163,7 @@ sensor 6:
 sensor 7:
   - platform: statistics
     name: nws_temperature_stats
-    max_age: '168:00'
+    max_age: '120:00'
     sampling_size: 500
     entity_id: sensor.nws_temperature
 
