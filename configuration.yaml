@@ -43,7 +43,7 @@ discovery:
 logbook:
     include:
         entities:
-          - device_tracker.michael_pixel3
+          - device_tracker.iphone
           - sensor.ups_status
         domains:
           - automation
@@ -164,7 +164,7 @@ sensor 6:
 sensor 7:
   - platform: statistics
     name: nws_temperature_stats
-    max_age: '168:00'
+    max_age: '120:00'
     sampling_size: 500
     state_characteristic: mean
     entity_id: sensor.nws_temperature
