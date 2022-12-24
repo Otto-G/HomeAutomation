@@ -195,10 +195,10 @@ iqvia:
       - allergy_index_tomorrow
       - disease_average_forecasted
 
-camera:
-    platform: generic
-    still_image_url: !secret radar_url
-    name: HomeWeatherRadar
+#camera:
+#    platform: generic
+#    still_image_url: !secret radar_url
+#    name: HomeWeatherRadar
 
 ###################################################
 #                    Whitewater                   #
