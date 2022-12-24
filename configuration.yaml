@@ -4,6 +4,7 @@ homeassistant:
   # Location required to calculate the time the sun rises and sets
   latitude: !secret home_lat
   longitude: !secret home_lon
+  country: US
   # Impacts weather/sunrise data (meters above sea level)
   elevation: !secret home_elev
   # 'metric' for the metric system, 'imperial' for the imperial system
