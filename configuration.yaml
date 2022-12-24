@@ -4,7 +4,6 @@ homeassistant:
   # Location required to calculate the time the sun rises and sets
   latitude: !secret home_lat
   longitude: !secret home_lon
-  country: US
   # Impacts weather/sunrise data (meters above sea level)
   elevation: !secret home_elev
   # 'metric' for the metric system, 'imperial' for the imperial system
@@ -212,7 +211,8 @@ camera:
 #      still_image_url: https://water.weather.gov/resources/hydrographs/mrdo1_hg.png
 #      name: MadRiverDayton
 #    - platform: generic
-#      still_image_url: https://water.weather.gov/resources/hydrographs/delo1_hg.png
+#      # still_image_url: https://water.weather.gov/resources/hydrographs/delo1_hg.png
+#      still_image_url: https://www.lrh-wc.usace.army.mil/wm/data/plots/forecast/delaware-lake-elev-flow-fcst.png
 #      name: Olentangy
 #    - platform: generic
 #      still_image_url: https://water.weather.gov/resources/hydrographs/dtno1_hg.png
@@ -285,6 +285,16 @@ sensor 2:
         - loadpct
 
 apcupsd:
+
+
+###################################################
+#                  Notifications                  #
+###################################################
+
+notify:
+    platform: pushbullet
+    api_key: !secret pushbullet_key
+    name: pushbullet
 
 ###################################################
 #                     Computers                   #
