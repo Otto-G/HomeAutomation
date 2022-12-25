@@ -44,7 +44,8 @@ discovery:
 logbook:
     include:
         entities:
-          - device_tracker.michael_pixel3
+          - device_tracker.iphone
+          - sensor.ups_status
         domains:
           - automation
           
