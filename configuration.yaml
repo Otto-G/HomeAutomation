@@ -160,7 +160,7 @@ sensor 6:
       nws_temperature:
         friendly_name: "Temperature"
         unit_of_measurement: '°F'
-        value_template: "{{ iif(is_state(state_attr('weather.kmrt_daynight', 'temperature'), 'unavailable'), states('sensor.nws_temperature'), state_attr('weather.kmrt_daynight', 'temperature') | float)}}"
+        value_template: "{{ iif(is_state(state_attr('weather.kmrt_daynight', 'temperature') | string, 'unavailable'), states('sensor.nws_temperature'), state_attr('weather.kmrt_daynight', 'temperature') | float)}}"
 
 sensor 7:
   - platform: statistics
