@@ -277,6 +277,8 @@ sensor 2:
       command: cat /config/zpoolStatus.txt
 
 
+fastdotcom:
+
 #    - platform: apcupsd
 #      resources:
 #        - status
