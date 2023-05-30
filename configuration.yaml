@@ -251,17 +251,6 @@ sensor 2:
       command: cat /config/zpoolStatus.txt
 
 
-#    - platform: apcupsd
-#      resources:
-#        - status
-#        - bcharge
-#        - lastxfer
-#        - battdate
-#        - timeleft
-#        - loadpct
-#
-#apcupsd:
-
 ###################################################
 #                     Computers                   #
 ###################################################
