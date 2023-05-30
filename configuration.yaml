@@ -196,32 +196,6 @@ iqvia:
       - allergy_index_tomorrow
       - disease_average_forecasted
 
-#camera:
-#    platform: generic
-#    still_image_url: !secret radar_url
-#    name: HomeWeatherRadar
-
-###################################################
-#                    Whitewater                   #
-###################################################
-
-#camera 2:
-#    - platform: generic
-#      still_image_url: https://water.weather.gov/resources/hydrographs/oplp1_hg.png
-#      name: LowerYoughRiverLevel
-#    - platform: generic
-#      still_image_url: https://water.weather.gov/resources/hydrographs/mrdo1_hg.png
-#      name: MadRiverDayton
-#    - platform: generic
-#      # still_image_url: https://water.weather.gov/resources/hydrographs/delo1_hg.png
-#      still_image_url: https://www.lrh-wc.usace.army.mil/wm/data/plots/forecast/delaware-lake-elev-flow-fcst.png
-#      name: Olentangy
-#    - platform: generic
-#      still_image_url: https://water.weather.gov/resources/hydrographs/dtno1_hg.png
-#      name: DaytonArtWave
-#    - platform: generic
-#      still_image_url: https://water.weather.gov/resources/hydrographs/dbvo1_hg.png
-#      name: BigDarby
 
 ###################################################
 #                  System info                    #
