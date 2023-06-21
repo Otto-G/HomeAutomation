@@ -260,6 +260,7 @@ command_line:
         command_on: "/usr/bin/ssh hawol@192.168.1.55 wakeonlan a8:a1:59:49:49:cb"
         command_state: "/bin/ping -c 1 -W 2 192.168.1.200 &> /dev/null; echo $?"
         value_template: '{{ value == "0" }}'
+        unique_id: "desktopWakeOnLan01"
 
     
 ###################################################
