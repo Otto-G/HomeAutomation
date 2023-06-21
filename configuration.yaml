@@ -253,10 +253,9 @@ sensor 2:
 #                     Computers                   #
 ###################################################
 
-switch:
-  - platform: command_line
-    switches:
-      desktop_pc:
+command_line:
+    - switch:
+        name: "desktop_pc"
         friendly_name: "Demios Desktop"
         command_off: "/usr/bin/curl http://192.168.1.200:7760/suspend"
         command_on: "/usr/bin/ssh hawol@192.168.1.55 wakeonlan a8:a1:59:49:49:cb"
