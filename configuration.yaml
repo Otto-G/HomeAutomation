@@ -184,16 +184,6 @@ sensor 9:
         unit_of_measurement: '°F'
         value_template: "{{ states('sensor.z_wave_plus_thermostat_air_temperature') | float - 10}}"
 
-iqvia:
-    zip_code: !secret zipCode
-    monitored_conditions:
-      - allergy_average_forecasted
-#      - allergy_average_historical
-      - allergy_index_today
-#      - allergy_index_yesterday
-      - allergy_index_tomorrow
-      - disease_average_forecasted
-
 
 ###################################################
 #                  System info                    #
