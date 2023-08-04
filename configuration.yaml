@@ -37,9 +37,6 @@ system_health:
 # Track the sun
 sun:
 
-# Discover some devices automatically
-discovery:
-
 # View all events in a logbook
 logbook:
     include:
