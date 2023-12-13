@@ -204,35 +204,6 @@ sensor 2:
         - type: 'swap_use_percent'
         - type: 'processor_use'
         - type: 'last_boot'
-    
-    - platform: command_line
-      name: cpu_0_temperature
-      command: cat /config/cpu0temp.txt
-      unit_of_measurement: "°C"
-    
-    - platform: command_line
-      name: P8J8XDVR_Temperature
-      command: cat /config/P8J8XDVRtemp.txt
-      unit_of_measurement: "°C"
-
-    - platform: command_line
-      name: 200703809989_Temperature
-      command: cat /config/200703809989temp.txt
-      unit_of_measurement: "°C"
-
-    - platform: command_line
-      name: P8G1G7YR_Temperature
-      command: cat /config/P8G1G7YRtemp.txt
-      unit_of_measurement: "°C"
-
-    - platform: command_line
-      name: ST4000VN008_Temperature
-      command: cat /config/ST4000VN008temp.txt
-      unit_of_measurement: "°C"
-
-    - platform: command_line
-      name: zpool_status
-      command: cat /config/zpoolStatus.txt
 
 
 ###################################################
@@ -247,6 +218,41 @@ command_line:
         command_state: "/bin/ping -c 1 -W 2 192.168.1.200 &> /dev/null; echo $?"
         value_template: '{{ value == "0" }}'
         unique_id: "desktopWakeOnLan01"
+        
+    - sensor:
+        name: cpu_0_temperature
+        unique_id: cpu_0_temperature
+        command: cat /config/cpu0temp.txt
+        unit_of_measurement: "°C"
+    
+    - sensor:
+        name: P8J8XDVR_Temperature
+        unique_id: P8J8XDVR_Temperature
+        command: cat /config/P8J8XDVRtemp.txt
+        unit_of_measurement: "°C"
+
+    - sensor:
+        name: 200703809989_Temperature
+        unique_id: 200703809989_Temperature
+        command: cat /config/200703809989temp.txt
+        unit_of_measurement: "°C"
+
+    - sensor:
+        name: P8G1G7YR_Temperature
+        unique_id: P8G1G7YR_Temperature
+        command: cat /config/P8G1G7YRtemp.txt
+        unit_of_measurement: "°C"
+
+    - sensor:
+        name: ST4000VN008_Temperature
+        unique_id: ST4000VN008_Temperature
+        command: cat /config/ST4000VN008temp.txt
+        unit_of_measurement: "°C"
+
+    - sensor:
+        name: zpool_status
+        unique_id: zpool_status
+        command: cat /config/zpoolStatus.txt
 
     
 ###################################################
