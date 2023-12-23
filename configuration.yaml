@@ -148,13 +148,13 @@ sensor 5:
         unit_of_measurement: 'hPa'
         value_template: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
 
-sensor 6:
-  - platform: template
-    sensors:
-      nws_temperature:
-        friendly_name: "Temperature"
-        unit_of_measurement: '°F'
-        value_template: "{{ iif(state_attr('weather.kmrt_daynight', 'temperature') > -200, state_attr('weather.kmrt_daynight', 'temperature') | float, states('sensor.nws_temperature'), )}}"
+# sensor 6:
+#  - platform: template
+#    sensors:
+#      nws_temperature:
+#        friendly_name: "Temperature"
+#        unit_of_measurement: '°F'
+#        value_template: "{{ iif(state_attr('weather.kmrt_daynight', 'temperature') > -200, state_attr('weather.kmrt_daynight', 'temperature') | float, states('sensor.nws_temperature'), )}}"
 
 sensor 7:
   - platform: statistics
@@ -162,7 +162,7 @@ sensor 7:
     max_age: '168:00'
     sampling_size: 500
     state_characteristic: mean
-    entity_id: sensor.nws_temperature
+    entity_id: sensor.kmrt_temperature
 
 sensor 8:
   - platform: template
