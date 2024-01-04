@@ -182,31 +182,6 @@ sensor 9:
 
 
 ###################################################
-#                  System info                    #
-###################################################
-
-# System resources
-#sensor 2: 
-#    - platform: systemmonitor
-#      resources: 
-#        #- type: 'disk_use_percent'
-#        #  arg: '/Pool1-Working'
-#        #- type: 'disk_free'
-#        #  arg: '/Pool1-Working'
-#        - type: 'disk_use_percent'
-#          arg: '/'
-#        - type: 'disk_free'
-#          arg: '/'
-#        - type: 'memory_use_percent'
-#        - type: 'memory_use'
-#        - type: 'memory_free'
-##        - type: 'swap_free'
-#        - type: 'swap_use_percent'
-#        - type: 'processor_use'
-#        - type: 'last_boot'
-
-
-###################################################
 #                     Computers                   #
 ###################################################
 
