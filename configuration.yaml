@@ -70,15 +70,6 @@ map:
 mobile_app:
 
 ###################################################
-#                      Hubs                       #
-###################################################
-
-#zwave:
-#    usb_path: /dev/ttyACM0
-#    polling_interval: 10000 # Polling speed in milliseconds
-#    # High polling number was needed to keep z-wave network stable and working
-
-###################################################
 #                     Google                      #
 ###################################################
 
