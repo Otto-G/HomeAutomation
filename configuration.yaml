@@ -70,23 +70,6 @@ map:
 mobile_app:
 
 ###################################################
-#                     Zones                       #
-###################################################
-zone:
-  name: Work
-  latitude: !secret work_lat
-  longitude: !secret work_lon
-  radius: 300
-  icon: mdi:domain
-
-zone 2:
-  name: Honda R&D
-  latitude: !secret guest_lat
-  longitude: !secret guest_lon
-  radius: 500
-  icon: mdi:factory 
-
-###################################################
 #                      Hubs                       #
 ###################################################
 

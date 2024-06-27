@@ -18,7 +18,8 @@ logger:
 api:
 
 ota:
-  password: !secret co2ota
+  - platform: esphome
+    password: !secret co2ota
 
 wifi:
   ssid: !secret wifiSSID
