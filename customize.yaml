@@ -1,11 +1,3 @@
-device_tracker.pi_shamu:
-  friendly_name: Michael
-switch.living_room_ligh_switch:
-  friendly_name: Living room lights
-switch.bedroom_lights_switch:
-  friendly_name: Bedroom lights
-switch.coach_lights_switch:
-  friendly_name: Coach lights
 sensor.cpu_0_temperature:
   friendly_name: CPU temperature
   device_class: temperature
@@ -13,20 +5,6 @@ sensor.hd_1_temperature:
   friendly_name: HD 1 Temperature
 sensor.hd_2_temperature:
   friendly_name: HD 2 Temperature
-camera.homeweatherradar:
-  friendly_name: Home Weather Radar
-group.all_automations:
-  friendly_name: all automations
-switch.tv_outlet_switch:
-  friendly_name: TV outlet
-switch.entryway_light_switch:
-  friendly_name: Entryway light
-switch.hall_light_switch:
-  friendly_name: Hall light
-zone.home:
-  radius: 150
-group.default_view:
-  friendly_name: Home
 switch.desktop_pc:
   assumed_state: false
 sensor.p8g1g7yr_temperature:
