@@ -64,9 +64,6 @@ default_config:
 # Enables the frontend
 frontend:
 
-# Enable map screen
-map:
-
 # Add in mobile app compatibility
 mobile_app:
 
