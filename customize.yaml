@@ -1,3 +1,5 @@
+zone.home:
+  radius: 300
 sensor.cpu_0_temperature:
   friendly_name: CPU temperature
   device_class: temperature
