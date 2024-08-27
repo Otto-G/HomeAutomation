@@ -87,7 +87,7 @@ sensor:
       nws_pressure:
         friendly_name: "Pressure"
         unit_of_measurement: 'hPa'
-        value_template: "{{ state_attr('weather.kmrt_daynight', 'pressure')|float * 33.8639 | round(2) }}"
+        value_template: "{{ states('sensor.klan_barometric_pressure') | float * 33.8639 | round(2) }}"
 
 # Finding the rate of change of the pressure
 sensor 3:
@@ -125,7 +125,7 @@ sensor 7:
     max_age: '168:00'
     sampling_size: 500
     state_characteristic: mean
-    entity_id: sensor.kmrt_temperature
+    entity_id: sensor.klan_temperature
 
 sensor 8:
   - platform: template
