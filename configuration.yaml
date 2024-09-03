@@ -127,22 +127,6 @@ sensor 7:
     state_characteristic: mean
     entity_id: sensor.klan_temperature
 
-sensor 8:
-  - platform: template
-    sensors:
-      home_temp_float:
-        friendly_name: "Home Temp Float"
-        unit_of_measurement: '°F'
-        value_template: "{{ states('sensor.z_wave_plus_thermostat_air_temperature') | float}}"
-
-sensor 9:
-  - platform: template
-    sensors:
-      home_temp_float_offset:
-        friendly_name: "Home Temp Float"
-        unit_of_measurement: '°F'
-        value_template: "{{ states('sensor.z_wave_plus_thermostat_air_temperature') | float - 10}}"
-
 
 ###################################################
 #                     Computers                   #
