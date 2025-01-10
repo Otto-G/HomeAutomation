@@ -8,7 +8,7 @@ homeassistant:
   # Impacts weather/sunrise data (meters above sea level)
   elevation: !secret home_elev
   # 'metric' for the metric system, 'imperial' for the imperial system
-  unit_system: US_CUSTOMARY_SYSTEM
+  unit_system: us_customary
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret time_zone
     
