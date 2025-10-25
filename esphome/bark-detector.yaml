@@ -1,0 +1,65 @@
+globals:
+
+  - id: esphome_sensitivity
+    type: float
+    initial_value: '36.5'
+    restore_value: yes
+
+  - id: esphome_volume
+    type: int
+ 
+sensor:
+
+  - platform: adc
+    pin: A0
+    id: esphome_db
+    device_class: signal_strength
+    name: "Db SoundEsp"
+    icon: "mdi:volume-vibrate"
+    unit_of_measurement: "db"
+    update_interval: 5s
+    raw: true
+    filters:
+      - lambda: |-
+          unsigned int sample;
+          unsigned long startMillis= millis(); 
+          float peakToPeak = 0; 
+          unsigned int signalMax = 0;
+          unsigned int signalMin = 1024;
+          while (millis() - startMillis < 500) {
+            sample = analogRead(A0);
+            if (sample < 1024){
+                if (sample > signalMax){
+                    signalMax = sample;
+                }
+                else if (sample < signalMin){
+                    signalMin = sample;
+                }
+              }
+          }
+          peakToPeak = map((signalMax - signalMin),1,1024,1.5,1024);
+          id(esphome_volume) = peakToPeak;
+          float state = id(esphome_sensitivity)*log10(peakToPeak)+15;  
+          return(state);
+
+  - platform: template
+    name: "Db Volume SoundEsp"
+    icon: "mdi:volume-high"
+    unit_of_measurement: "%"
+    update_interval: 5s
+    lambda: return(map((id(esphome_db).state),15,150,0,100));
+
+  - platform: template
+    name: "Db RAW SoundEsp"
+    icon: "mdi:volume-source"
+    unit_of_measurement: "%"
+    update_interval: 5s
+    lambda: return(map(id(esphome_volume),1,1024,0,100));
+
+  - platform: copy
+    source_id: esphome_db
+    name: "Db SoundEsp Average"
+    filters:
+      - sliding_window_moving_average:
+          window_size: 15
+          send_every: 5
