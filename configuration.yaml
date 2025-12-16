@@ -81,8 +81,7 @@ google_assistant:
 ###################################################
 
 # Weather Prediction
-sensor:
-  - platform: template
+template:
     sensors:
       nws_pressure:
         friendly_name: "Pressure"
@@ -102,8 +101,7 @@ sensor 3:
     time_window: "00:30:00"  # looking at the time change window over a 15min period
 
 # Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
-sensor 4:
-  - platform: template
+template 2:
     sensors:
       pressure_change_filtered:
         friendly_name: "Pressure Change Filtered"
@@ -111,8 +109,7 @@ sensor 4:
         value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
 
 # Filtering out the pressure to translate 0 vales (not possible) to None to improve graph.
-sensor 5:
-  - platform: template
+template 3:
     sensors:
       pressure_filtered:
         friendly_name: "Pressure Filtered"
