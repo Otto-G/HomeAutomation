@@ -173,6 +173,10 @@ command_line:
         unique_id: zpool_status
         command: cat /config/zpoolStatus.txt
 
+    - sensor:
+        name: myip
+        unique_id: myip
+        command: curl https://checkip.amazonaws.com/
     
 ###################################################
 #                    Groups                       #
