@@ -83,7 +83,7 @@ google_assistant:
 # Weather Prediction
 template:
     sensor:
-      nws_pressure:
+      - name: nws_pressure
         friendly_name: "Pressure"
         unit_of_measurement: 'hPa'
         value_template: "{{ states('sensor.klan_barometric_pressure') | float * 33.8639 | round(2) }}"
@@ -103,7 +103,7 @@ sensor 3:
 # Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
 template 2:
     sensor:
-      pressure_change_filtered:
+      - name: pressure_change_filtered
         friendly_name: "Pressure Change Filtered"
         unit_of_measurement: 'hPa'
         value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
@@ -111,7 +111,7 @@ template 2:
 # Filtering out the pressure to translate 0 vales (not possible) to None to improve graph.
 template 3:
     sensor:
-      pressure_filtered:
+      - name: pressure_filtered
         friendly_name: "Pressure Filtered"
         unit_of_measurement: 'hPa'
         value_template: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
