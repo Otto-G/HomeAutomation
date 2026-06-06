@@ -84,9 +84,8 @@ google_assistant:
 template:
     sensor:
       - name: nws_pressure
-        friendly_name: "Pressure"
         unit_of_measurement: 'hPa'
-        value_template: "{{ states('sensor.klan_barometric_pressure') | float * 33.8639 | round(2) }}"
+        state: "{{ states('sensor.klan_barometric_pressure') | float * 33.8639 | round(2) }}"
 
 # Finding the rate of change of the pressure
 sensor 3:
@@ -104,17 +103,15 @@ sensor 3:
 template 2:
     sensor:
       - name: pressure_change_filtered
-        friendly_name: "Pressure Change Filtered"
         unit_of_measurement: 'hPa'
-        value_template: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
+        state: "{% if float(states.sensor.pressure_change.state) > 200 %} 0 {% elif float(states.sensor.pressure_change.state) < -200 %} 0 {% else %} {{ states.sensor.pressure_change.state }} {% endif %}"
 
 # Filtering out the pressure to translate 0 vales (not possible) to None to improve graph.
 template 3:
     sensor:
       - name: pressure_filtered
-        friendly_name: "Pressure Filtered"
         unit_of_measurement: 'hPa'
-        value_template: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
+        state: "{% if float(states.sensor.nws_pressure.state) < 700 %} None {% else %} {{ states.sensor.nws_pressure.state }} {% endif %}"
 
 sensor 7:
   - platform: statistics
