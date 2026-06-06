@@ -1,8 +1,8 @@
 esphome:
   name: co2-monitor
-  platform: ESP32
-  board: heltec_wifi_kit_32_v2
 
+esp32:
+  board: heltec_wifi_kit_32
 
 # Enable Safe Mode
 safe_mode:
