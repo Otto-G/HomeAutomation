@@ -82,7 +82,7 @@ google_assistant:
 
 # Weather Prediction
 template:
-    sensors:
+    sensor:
       nws_pressure:
         friendly_name: "Pressure"
         unit_of_measurement: 'hPa'
@@ -102,7 +102,7 @@ sensor 3:
 
 # Filtering out the pressure change rate for unreasonable values (zero values from pressure creates $inf derivative)
 template 2:
-    sensors:
+    sensor:
       pressure_change_filtered:
         friendly_name: "Pressure Change Filtered"
         unit_of_measurement: 'hPa'
@@ -110,7 +110,7 @@ template 2:
 
 # Filtering out the pressure to translate 0 vales (not possible) to None to improve graph.
 template 3:
-    sensors:
+    sensor:
       pressure_filtered:
         friendly_name: "Pressure Filtered"
         unit_of_measurement: 'hPa'
