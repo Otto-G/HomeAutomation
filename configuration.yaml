@@ -78,7 +78,7 @@ template:
     sensor:
       - name: nws_pressure
         unit_of_measurement: 'hPa'
-        state: "{{ states('sensor.klan_barometric_pressure') | float * 33.8639 | round(2) }}"
+        state: "{{ states('sensor.kpit_barometric_pressure') | float * 33.8639 | round(2) }}"
 
 # Finding the rate of change of the pressure
 sensor 3:
