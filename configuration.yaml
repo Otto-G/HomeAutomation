@@ -112,7 +112,7 @@ sensor 7:
     max_age: '168:00'
     sampling_size: 500
     state_characteristic: mean
-    entity_id: sensor.klan_temperature
+    entity_id: sensor.kpit_temperature
 
 
 ###################################################
